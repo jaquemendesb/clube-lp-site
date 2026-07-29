@@ -37,8 +37,8 @@ const selos = [
 
     <ul class="mt-space-lg grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
       {itens.map((item) => (
-        <li class="font-body text-clube-azul-claro flex items-start gap-space-xs">
-          <span aria-hidden="true">✓</span>
+        <li class="font-body text-clube-azul-claro flex items-start gap-space-sm">
+          <span aria-hidden="true" class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-clube-amarelo text-sm font-bold text-clube-azul-escuro">✓</span>
           <span>{item}</span>
         </li>
       ))}
@@ -48,7 +48,7 @@ const selos = [
       <p class="font-body text-clube-azul-escuro">
         nas condições atuais — de <span class="line-through">R$ 547,00</span> por
       </p>
-      <p class="mt-space-xs font-heading font-semibold text-3xl md:text-4xl text-clube-azul-escuro">
+      <p class="mt-space-xs font-heading font-semibold text-4xl md:text-5xl text-clube-azul-escuro">
         12x de R$ 44,70
       </p>
       <p class="font-body text-xs text-clube-azul-escuro/70">
