@@ -1,7 +1,99 @@
 ---
+// Conteúdo: CONTENT.md §Seção 9. Acordeão com a classe literal "lp-clube-sec12-accordion"
+// e itens ".accordion-title" (GTM-EVENTS.md, evento faq_open — nome herdado do Flatsome,
+// mantido literal). FAQPage JSON-LD gerado a partir das mesmas perguntas (SPEC.md §SEO).
+const faq = [
+  {
+    pergunta: 'Para quais turmas o Clube é direcionado?',
+    resposta:
+      'Ensino Fundamental I (1º ao 5º ano). Cada atividade é identificada por turma e habilidade BNCC. Funciona bem para turmas desniveladas (versões em níveis diferentes do mesmo conteúdo).',
+  },
+  {
+    pergunta: 'Como funciona o acesso? É anual ou mensal?',
+    resposta:
+      'Anual: paga uma vez, acesso liberado por 12 meses. Não é assinatura mensal recorrente — nada é cobrado automaticamente depois. Ao final, você decide se renova.',
+  },
+  {
+    pergunta: 'Quantas vezes por mês entram materiais novos?',
+    resposta: 'Toda semana. Aviso em primeira mão pela comunidade no WhatsApp.',
+  },
+  {
+    pergunta: 'Como acesso o Clube depois que efetuar a compra?',
+    resposta:
+      'E-mail com login e senha após confirmação de pagamento. Imediato no PIX/cartão (minutos); até 2 dias úteis no boleto. Acesso 24h, computador ou celular.',
+  },
+  {
+    pergunta: 'Quais são as formas de pagamento?',
+    resposta:
+      'Cartão de crédito (até 12x sem juros, 12x de R$44,70); PIX (à vista, liberado em minutos); Boleto (à vista, liberado após compensação).',
+  },
+  {
+    pergunta: 'Tem suporte se eu precisar de ajuda?',
+    resposta:
+      'Sim, suporte humano pelo WhatsApp em horário comercial. Comunidade também é canal direto com a Prof Jaque e outras profs.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.pergunta,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.resposta,
+    },
+  })),
+};
 ---
 
-<section>
-  <!-- Conteúdo: CONTENT.md §Seção 9. Acordeão precisa da classe literal
-       "lp-clube-sec12-accordion" com itens ".accordion-title" (GTM-EVENTS.md, evento faq_open). -->
+<section class="py-[40px] md:py-[60px]">
+  <div class="max-w-3xl mx-auto px-space-md">
+    <h2 class="font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center">
+      Perguntas frequentes
+    </h2>
+
+    <div class="lp-clube-sec12-accordion mt-space-xl divide-y divide-clube-azul-claro">
+      {faq.map((item, i) => (
+        <div class="py-space-sm">
+          <button
+            type="button"
+            class="accordion-title w-full flex items-center justify-between gap-space-sm text-left font-heading text-clube-azul-escuro"
+            aria-expanded="false"
+            aria-controls={`faq-answer-${i}`}
+            id={`faq-question-${i}`}
+          >
+            <span>{item.pergunta}</span>
+            <span class="accordion-icon shrink-0" aria-hidden="true">+</span>
+          </button>
+          <div
+            id={`faq-answer-${i}`}
+            role="region"
+            aria-labelledby={`faq-question-${i}`}
+            class="accordion-panel hidden mt-space-xs font-body text-clube-azul-escuro"
+          >
+            {item.resposta}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
 </section>
+
+<script>
+  document.querySelectorAll('.lp-clube-sec12-accordion .accordion-title').forEach((button) => {
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      const panelId = button.getAttribute('aria-controls');
+      const panel = panelId ? document.getElementById(panelId) : null;
+      const icon = button.querySelector('.accordion-icon');
+
+      button.setAttribute('aria-expanded', String(!expanded));
+      panel?.classList.toggle('hidden', expanded);
+      if (icon) icon.textContent = expanded ? '+' : '−';
+    });
+  });
+</script>

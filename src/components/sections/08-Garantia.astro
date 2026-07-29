@@ -1,6 +1,33 @@
 ---
+// Conteúdo: CONTENT.md §Seção 8. Selo de garantia (selo-garantia-7-dias.svg) ainda não
+// copiado (docs/reference/MEDIA-TODO.md) — fallback emoji 🛡️ conforme a própria spec permite.
+const selos = [
+  '✅ Sem letra miúda (condições claras na hora da compra)',
+  '✅ Reembolso direto (processo simples pelo suporte)',
+  '✅ Risco zero pra você (o risco fica com a gente)',
+];
 ---
 
-<section>
-  <!-- Conteúdo: CONTENT.md §Seção 8 -->
+<section class="py-[40px] md:py-[60px]">
+  <div class="max-w-3xl mx-auto px-space-md text-center">
+    <span class="text-5xl" aria-hidden="true">🛡️</span>
+    <h2 class="mt-space-sm font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro">
+      Você tem <strong>7 dias</strong> para conhecer o Clube por dentro.
+    </h2>
+    <p class="mt-space-sm font-body text-clube-azul-escuro">
+      Entre, baixe os materiais, leve para a sala de aula e veja a turma reagir. Se em até 7 dias você sentir que o
+      Clube não é para você, devolvemos <strong>100% do valor pago</strong> — sem questionamentos.
+    </p>
+
+    <div class="mt-space-lg grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
+      {selos.map((selo) => (
+        <p class="rounded-radius-md shadow-sm bg-clube-branco p-space-sm font-body text-sm text-clube-azul-escuro">{selo}</p>
+      ))}
+    </div>
+
+    <p class="mt-space-lg font-body text-xs text-clube-azul-escuro/70">
+      Garantia em conformidade com o Código de Defesa do Consumidor (Art. 49). Prazo contado a partir da confirmação
+      do pagamento.
+    </p>
+  </div>
 </section>

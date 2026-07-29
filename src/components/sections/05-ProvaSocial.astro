@@ -1,6 +1,58 @@
 ---
+// Conteúdo: CONTENT.md §Seção 5.
+//
+// ⚠️ PENDENTE (CONTENT.md §Seção 5 / CLAUDE.md §Decisões em aberto): os prints das profs
+// "Rosa" e "Maria Regina" parecem trocados pelo nome do arquivo original — não publicar
+// esta seção sem a Jaque confirmar. Fotos aqui são placeholders (cor sólida) até essa
+// pendência ser resolvida e os prints reais serem copiados para public/images/
+// (docs/reference/MEDIA-TODO.md). Cada card já tem uma transcrição textual oculta
+// (.sr-only) do trecho de depoimento citado em CONTENT.md, para acessibilidade —
+// atualizar com a transcrição completa quando o print for confirmado.
+const stats = [
+  { numero: '+45 mil', label: 'professoras impactadas pelos materiais da Prof Jaque' },
+  { numero: '1º ao 5º', label: 'ano do Fundamental I cobertos por ano e disciplina' },
+  { numero: '+365', label: 'atividades disponíveis para níveis diferentes de aprendizagem' },
+  { numero: 'Toda semana', label: 'novos conteúdos entram no Clube — você nunca fica sem opção nova' },
+];
+
+const depoimentos = [
+  { nome: 'Prof Pamela', resumo: 'alunos mais interessados' },
+  { nome: 'Prof Rosa', resumo: 'aulas mais divertidas e pensantes' },
+  { nome: 'Prof Maria Regina', resumo: 'mais criativa' },
+];
 ---
 
-<section>
-  <!-- Conteúdo: CONTENT.md §Seção 5 -->
+<section class="py-[40px] md:py-[60px]">
+  <div class="max-w-6xl mx-auto px-space-md">
+    <p class="text-center font-body text-sm uppercase tracking-wide text-clube-rosa">QUEM JÁ ESTÁ DENTRO</p>
+    <h2 class="mt-space-xs font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center">
+      Uma comunidade de profs que <strong>já transformou suas aulas</strong>.
+    </h2>
+
+    <div class="mt-space-xl grid grid-cols-2 lg:grid-cols-4 gap-space-md">
+      {stats.map((stat) => (
+        <div class="text-center rounded-radius-md shadow-sm p-space-md bg-clube-branco">
+          <p class="font-heading font-semibold text-2xl text-clube-azul-escuro">{stat.numero}</p>
+          <p class="mt-space-xs font-body text-sm text-clube-azul-escuro">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-space-xl grid grid-cols-1 md:grid-cols-3 gap-space-md">
+      {depoimentos.map((depo) => (
+        <div class="rounded-radius-lg shadow-md bg-clube-branco p-space-md">
+          <div class="aspect-[4/3] w-full rounded-radius-md bg-clube-azul-claro" role="img" aria-label={`Print de depoimento de ${depo.nome}`}></div>
+          <p class="mt-space-sm font-heading text-clube-azul-escuro">{depo.nome}</p>
+          <p class="font-body text-sm text-clube-azul-escuro">"{depo.resumo}"</p>
+          <span class="sr-only">Depoimento de {depo.nome}: {depo.resumo}.</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-space-xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-space-sm">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div class="aspect-square rounded-radius-sm bg-clube-azul-claro" role="img" aria-label={`Print de depoimento ${i + 1}`}></div>
+      ))}
+    </div>
+  </div>
 </section>

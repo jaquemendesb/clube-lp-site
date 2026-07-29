@@ -1,6 +1,45 @@
 ---
+// Conteúdo: CONTENT.md §Seção 3.
+const passos = [
+  {
+    titulo: 'Assine uma vez',
+    texto: 'Pagamento anual em até 12x. Sem cobrança surpresa e sem renovação automática — você decide se continua.',
+  },
+  {
+    titulo: 'Acesse todo o acervo',
+    texto: 'Atividades, projetos e aulas prontas — organizados por ano (1º ao 5º) e por disciplina. Tudo num só lugar.',
+  },
+  {
+    titulo: 'Baixe e aplique',
+    texto: 'Baixa o material, imprime ou usa no projetor — e vê a turma reagir já na próxima aula.',
+  },
+];
 ---
 
-<section>
-  <!-- Conteúdo: CONTENT.md §Seção 3 -->
+<section class="py-[40px] md:py-[60px]">
+  <div class="max-w-6xl mx-auto px-space-md">
+    <p class="text-center font-body text-sm uppercase tracking-wide text-clube-rosa">COMO FUNCIONA</p>
+    <h2 class="mt-space-xs font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center max-w-3xl mx-auto">
+      Em <strong>3 passos simples</strong> você sai do planejamento na correria para aulas prontas com sobra de tempo.
+    </h2>
+
+    <div class="mt-space-xl grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+      {passos.map((passo, i) => (
+        <div class="text-center">
+          <span class="font-heading font-semibold text-4xl text-clube-rosa">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="mt-space-xs font-heading text-lg text-clube-azul-escuro">{passo.titulo}</h3>
+          <p class="mt-space-xs font-body text-clube-azul-escuro">{passo.texto}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-space-xl bg-clube-amarelo rounded-radius-lg p-space-lg grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+      <p class="font-body text-clube-azul-escuro">
+        📅 <strong>Toda semana</strong> — novos materiais entram no Clube. Você nunca fica sem opção nova para a próxima aula.
+      </p>
+      <p class="font-body text-clube-azul-escuro">
+        💬 <strong>Comunidade WhatsApp</strong> — profs trocando ideia, tirando dúvida e recebendo avisos de atualização em primeira mão.
+      </p>
+    </div>
+  </div>
 </section>

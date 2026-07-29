@@ -1,7 +1,69 @@
 ---
+// Conteúdo: CONTENT.md §Seção 4. O CTA do meio tem wrapper com classe "BENEFICIOS-CTA"
+// (GTM-EVENTS.md, evento click_cta_middle).
+import CtaButton from '../ui/CtaButton.astro';
+
+const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
+
+const beneficios = [
+  {
+    categoria: 'Língua Portuguesa',
+    beneficio: 'Leitura, escrita e produção de texto com sequências prontas',
+    exemplo: 'Projeto de 20 semanas para destravar a produção textual da turma',
+  },
+  {
+    categoria: 'Matemática',
+    beneficio: 'As 4 operações trabalhadas com material atrativo e progressivo',
+    exemplo: 'Jogos imprimíveis de adição, subtração, multiplicação e divisão por nível',
+  },
+  {
+    categoria: 'Demais disciplinas',
+    beneficio: 'História, Geografia, Ciências e datas comemorativas, alinhados à BNCC',
+    exemplo: 'Apresentações prontas + atividades por turma para a Semana da Pátria',
+  },
+  {
+    categoria: 'Projetos exclusivos',
+    beneficio: 'Jornadas completas que você só encontra dentro do Clube',
+    exemplo: '"Descomplicando a Caligrafia" em 7 passos e "Jornada Textual e Literária"',
+  },
+  {
+    categoria: 'Bônus — mini formação IA',
+    beneficio: 'Inteligência Artificial aplicada ao dia a dia da prof',
+    exemplo: 'Gerar relatórios, planos de aula e adaptações em segundos',
+  },
+  {
+    categoria: 'Comunidade WhatsApp',
+    beneficio: 'Grupo exclusivo com profs trocando ideia e atualizações semanais',
+    exemplo: 'Avisos em primeira mão sempre que um material novo entra no Clube',
+  },
+];
 ---
 
-<section>
-  <!-- Conteúdo: CONTENT.md §Seção 4. O CTA do meio precisa de um wrapper com classe
-       contendo "BENEFICIOS-CTA" (GTM-EVENTS.md, evento click_cta_middle). -->
+<section id="beneficios" class="py-[40px] md:py-[60px] bg-clube-branco">
+  <div class="max-w-6xl mx-auto px-space-md">
+    <p class="text-center font-body text-sm uppercase tracking-wide text-clube-rosa">ACESSO COMPLETO POR 12 MESES</p>
+    <h2 class="mt-space-xs font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center">
+      Tudo o que você recebe ao entrar no <strong>Clube das Profs</strong>
+    </h2>
+    <p class="mt-space-xs font-body text-clube-azul-escuro text-center max-w-2xl mx-auto">
+      6 frentes de conteúdo, organizadas para você abrir e usar — sem montar nada do zero.
+    </p>
+
+    <div class="mt-space-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-md">
+      {beneficios.map((item) => (
+        <div class="rounded-radius-lg shadow-sm p-space-md bg-clube-bege">
+          <h3 class="font-heading text-lg text-clube-azul-escuro">{item.categoria}</h3>
+          <p class="mt-space-xs font-body text-clube-azul-escuro">{item.beneficio}</p>
+          <p class="mt-space-xs font-body text-sm text-clube-azul-escuro/80">{item.exemplo}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="BENEFICIOS-CTA mt-space-xl text-center">
+      <CtaButton variant="primary" href={CHECKOUT_URL}>Quero entrar no Clube agora</CtaButton>
+      <p class="mt-space-sm font-body text-sm text-clube-azul-escuro">
+        Acesso imediato após a compra • Pagamento seguro
+      </p>
+    </div>
+  </div>
 </section>

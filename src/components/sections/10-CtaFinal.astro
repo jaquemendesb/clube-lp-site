@@ -1,7 +1,53 @@
 ---
+// Conteúdo: CONTENT.md §Seção 10. Id #fechamento-cta exigido por GTM-EVENTS.md (click_cta_bottom).
+//
+// ⚠️ PENDENTE (CLAUDE.md §Decisões em aberto): qual CNPJ vigente (migração
+// 40.235.494/0001-08 → 45.702.642/0001-70 pode já ter concluído ou estar em curso) — não
+// hardcodar sem confirmar com a Jaque. URLs das políticas também pendentes (não existiam
+// resolvidas no protótipo anterior). Placeholders abaixo marcados explicitamente.
+import CtaButton from '../ui/CtaButton.astro';
+
+const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
+const WHATSAPP_URL = 'https://api.whatsapp.com/send?phone=554784983702&text=Ol%C3%A1,%20Clube%20das%20Profs';
+const anoAtual = new Date().getFullYear();
+
+const selos = ['🔒 Pagamento seguro', '⚡ Acesso imediato', '🛟 7 dias de garantia'];
 ---
 
-<section id="fechamento-cta">
-  <!-- Conteúdo: CONTENT.md §Seção 10. Id #fechamento-cta exigido por GTM-EVENTS.md
-       (click_cta_bottom). -->
+<section id="fechamento-cta" class="py-[40px] md:py-[60px] bg-clube-azul-escuro">
+  <div class="max-w-3xl mx-auto px-space-md text-center">
+    <p class="font-body text-sm uppercase tracking-wide text-clube-amarelo">VOCÊ CHEGOU ATÉ AQUI POR UM MOTIVO</p>
+    <h2 class="mt-space-xs font-heading font-semibold text-[24px] md:text-[32px] text-clube-bege">
+      A próxima semana de aula vai acontecer <strong>com você ou sem o Clube</strong>.
+    </h2>
+    <p class="mt-space-sm font-body text-clube-azul-claro">
+      Quanto antes você entra, mais semanas de material pronto, projetos completos e comunidade você usa — pelo mesmo
+      investimento anual.
+    </p>
+
+    <div class="mt-space-lg flex flex-wrap justify-center items-center gap-space-md">
+      <CtaButton variant="primary" href={CHECKOUT_URL}>Quero entrar no Clube agora</CtaButton>
+      <CtaButton variant="support" href={WHATSAPP_URL}>Falar com o suporte</CtaButton>
+    </div>
+
+    <div class="mt-space-md flex flex-wrap justify-center gap-space-sm">
+      {selos.map((selo) => (
+        <span class="font-body text-sm text-clube-azul-claro">{selo}</span>
+      ))}
+    </div>
+  </div>
+
+  <footer class="mt-space-2xl border-t border-clube-azul-claro/20 pt-space-md">
+    <div class="max-w-3xl mx-auto px-space-md text-center font-body text-xs text-clube-azul-claro">
+      <p>
+        Copyright {anoAtual} © Prof Jaque Mendes. Todos os direitos reservados. Jaque Mendes JB Educa Ltda. CNPJ:
+        [CNPJ a confirmar — ver CLAUDE.md §Decisões em aberto]
+      </p>
+      <p class="mt-space-xs flex flex-wrap justify-center gap-space-sm">
+        <a href="#" class="underline underline-offset-4">Política de Privacidade</a>
+        <a href="#" class="underline underline-offset-4">Política de Vendas</a>
+        <a href="#" class="underline underline-offset-4">Avisos Legais</a>
+      </p>
+    </div>
+  </footer>
 </section>

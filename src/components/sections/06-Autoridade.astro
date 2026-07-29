@@ -1,6 +1,38 @@
 ---
+// Conteúdo: CONTENT.md §Seção 6. Sem CTA nesta seção (reservado para a Seção 7).
+const selos = [
+  { emoji: '🎓', texto: 'Pedagoga com formação e prática em sala de aula' },
+  { emoji: '👩‍🏫', texto: '+45 mil profs já usam os materiais da Jaque' },
+  { emoji: '✏️', texto: 'Cada recurso autoral, criado e validado por ela mesma' },
+];
 ---
 
-<section>
-  <!-- Conteúdo: CONTENT.md §Seção 6 -->
+<section class="py-[40px] md:py-[60px] bg-clube-azul-escuro">
+  <div class="max-w-6xl mx-auto px-space-md grid grid-cols-1 md:grid-cols-2 gap-space-lg items-center">
+    <!-- Foto pendente (docs/reference/MEDIA-TODO.md: "Seção 6 — banner principal da Jaque"). -->
+    <div class="aspect-[4/3] w-full rounded-radius-lg bg-clube-azul-claro" role="img" aria-label="Prof Jaque Mendes"></div>
+
+    <div>
+      <p class="font-body text-sm uppercase tracking-wide text-clube-rosa">QUEM CRIA OS RECURSOS DO CLUBE</p>
+      <h2 class="mt-space-xs font-heading font-semibold text-[24px] md:text-[32px] text-clube-bege">Prof Jaque Mendes</h2>
+      <p class="mt-space-md font-body text-clube-azul-claro">
+        Pedagoga apaixonada por criatividade e inovação na sala de aula. Há anos ajudando professoras do Fundamental I a
+        transformarem suas aulas com metodologias dinâmicas, lúdicas e eficazes — e a verem resultado já na semana
+        seguinte. Cada material do Clube nasce na bancada da Jaque: testado, refinado e alinhado à BNCC antes de chegar
+        até você.
+      </p>
+      <a href="https://www.instagram.com/jaque.mendesb" class="mt-space-sm inline-block font-body text-clube-bege underline underline-offset-4">
+        @jaque.mendesb
+      </a>
+
+      <div class="mt-space-lg grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
+        {selos.map((selo) => (
+          <div class="rounded-radius-md bg-clube-azul-claro/10 p-space-sm">
+            <span aria-hidden="true">{selo.emoji}</span>
+            <p class="mt-space-xs font-body text-sm text-clube-bege">{selo.texto}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
 </section>

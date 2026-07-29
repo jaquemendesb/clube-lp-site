@@ -1,7 +1,66 @@
 ---
+// Conteúdo: CONTENT.md §Seção 7. Variante ativa: B1 (destaque na parcela) — já refletida
+// na classe OFERTA-B1 da section. Variante B2 (destaque no valor total) fica documentada
+// aqui pra trocar depois, se o teste B pedir.
+//
+// ⚠️ PENDENTE (CONTENT.md §Seção 7 / CLAUDE.md §Decisões em aberto): confirmar que
+// R$ 547,00 é valor de referência real (já praticado antes), não só efeito de âncora —
+// risco de "preço fantasma" pelo CDC se questionado. Não alterar a copy sem validar com a Jaque.
+import CtaButton from '../ui/CtaButton.astro';
+
+const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
+
+const itens = [
+  'Centenas de atividades prontas (português, matemática, demais disciplinas)',
+  'Recursos para sala de aula',
+  'Projeto de Literatura e Produção Textual',
+  'Projeto Descomplicando a Caligrafia',
+  'Aula BNCC com material exclusivo',
+  'Novos recursos toda semana',
+  'Comunidade exclusiva no WhatsApp',
+  'Bônus: Mini formação de Inteligência Artificial',
+];
+
+const selos = [
+  '🔒 Pagamento seguro (PIX, boleto e cartão)',
+  '⚡ Acesso imediato (liberado após confirmação)',
+  '💬 Suporte humano (WhatsApp em horário comercial)',
+];
 ---
 
-<section class="OFERTA-B1" id="clube-valor">
-  <!-- Conteúdo: CONTENT.md §Seção 7. Classe OFERTA-* e id #clube-valor exigidos por
-       GTM-EVENTS.md (view_pricing, click_cta_bottom). -->
+<section class="OFERTA-B1 py-[40px] md:py-[60px] bg-clube-azul-escuro" id="clube-valor">
+  <div class="max-w-4xl mx-auto px-space-md">
+    <h2 class="font-heading font-semibold text-[24px] md:text-[32px] text-clube-bege text-center">
+      Você recebe tudo isso por 1 ano
+    </h2>
+
+    <ul class="mt-space-lg grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+      {itens.map((item) => (
+        <li class="font-body text-clube-azul-claro flex items-start gap-space-xs">
+          <span aria-hidden="true">✓</span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-space-xl rounded-radius-xl shadow-lg bg-clube-branco p-space-lg text-center">
+      <p class="font-body text-clube-azul-escuro">
+        nas condições atuais — de <span class="line-through">R$ 547,00</span> por
+      </p>
+      <p class="mt-space-xs font-heading font-semibold text-3xl md:text-4xl text-clube-azul-escuro">
+        12x de R$ 44,70
+      </p>
+      <p class="mt-space-xs font-body text-clube-azul-escuro">ou R$ 447,00 à vista no PIX/Boleto/Cartão</p>
+
+      <div class="mt-space-md">
+        <CtaButton variant="primary" href={CHECKOUT_URL}>Quero entrar no Clube agora</CtaButton>
+      </div>
+
+      <div class="mt-space-md flex flex-wrap justify-center gap-space-sm">
+        {selos.map((selo) => (
+          <span class="font-body text-sm text-clube-azul-escuro">{selo}</span>
+        ))}
+      </div>
+    </div>
+  </div>
 </section>

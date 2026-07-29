@@ -1,6 +1,37 @@
 ---
+// Conteúdo: CONTENT.md §Seção 2.
+// Ícones dor-*.svg ainda não copiados (docs/reference/MEDIA-TODO.md) — fallback com emoji, prioridade baixa.
+const dores = [
+  { emoji: '⏱️', forte: 'Falta de tempo', resto: 'para planejar aulas com qualidade.' },
+  { emoji: '👥', forte: 'Turma desnivelada', resto: '— alunos em ritmos diferentes ao mesmo tempo.' },
+  { emoji: '🎯', forte: 'Atenção que escapa', resto: 'entre uma atividade e outra.' },
+  { emoji: '🔍', forte: 'Horas garimpando', resto: 'atividades em dezenas de sites.' },
+  { emoji: '📄', forte: 'Material que não funciona', resto: '— bonito no PDF, vazio em sala.' },
+];
 ---
 
-<section>
-  <!-- Conteúdo: CONTENT.md §Seção 2 -->
+<section class="py-[40px] md:py-[60px]">
+  <div class="max-w-6xl mx-auto px-space-md">
+    <h2 class="font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center">
+      Se você sente isso no dia a dia da sala de aula...
+    </h2>
+
+    <div class="mt-space-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md">
+      {dores.map((dor) => (
+        <div class="bg-clube-branco rounded-radius-lg shadow-sm p-space-md text-center">
+          <span class="text-3xl" aria-hidden="true">{dor.emoji}</span>
+          <p class="mt-space-sm font-body text-clube-azul-escuro"><strong>{dor.forte}</strong> {dor.resto}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-space-xl bg-clube-azul-escuro rounded-radius-lg p-space-lg text-center">
+      <p class="font-heading font-semibold text-xl md:text-2xl text-clube-bege">
+        O <strong>Clube das Profs</strong> foi criado para resolver exatamente isso.
+      </p>
+      <p class="mt-space-sm font-body text-clube-azul-claro max-w-2xl mx-auto">
+        Recursos prontos, lúdicos e eficazes — entregues toda semana, organizados por ano e disciplina, e validados por mais de 45 mil professoras.
+      </p>
+    </div>
+  </div>
 </section>
