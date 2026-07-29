@@ -7,7 +7,7 @@ import CtaButton from '../ui/CtaButton.astro';
 const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
 ---
 
-<section class="HERO-PC-A1 py-[40px] md:py-[60px]">
+<section class="HERO-PC-A1 py-[40px] md:py-[60px] bg-gradient-to-b from-clube-bege to-clube-branco">
   <div class="max-w-6xl mx-auto px-space-md grid grid-cols-1 md:grid-cols-2 gap-space-lg items-center">
     <div>
       <h1 class="font-heading font-semibold text-[28px] md:text-[48px] leading-tight text-clube-azul-escuro">
@@ -29,6 +29,9 @@ const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
 
     <!-- Imagem pendente (docs/reference/MEDIA-TODO.md: "Hero — banner lateral"). Placeholder
          reserva o espaço (evita CLS) até o asset real ser copiado para public/images/. -->
-    <div class="aspect-[4/3] w-full rounded-radius-lg bg-clube-azul-claro" role="img" aria-label="Prof Jaque apresentando o Clube das Profs"></div>
+    <div class="relative">
+      <div class="absolute -top-6 -right-6 -z-10 h-40 w-40 rounded-full bg-clube-amarelo/20" aria-hidden="true"></div>
+      <div class="aspect-[4/3] w-full rounded-radius-xl shadow-lg bg-clube-azul-claro" role="img" aria-label="Prof Jaque apresentando o Clube das Profs"></div>
+    </div>
   </div>
 </section>
