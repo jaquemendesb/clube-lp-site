@@ -1,17 +1,26 @@
 ---
-import '../styles/global.css';
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/sections/01-Hero.astro';
+import Dores from '../components/sections/02-Dores.astro';
+import ComoFunciona from '../components/sections/03-ComoFunciona.astro';
+import Beneficios from '../components/sections/04-Beneficios.astro';
+import ProvaSocial from '../components/sections/05-ProvaSocial.astro';
+import Autoridade from '../components/sections/06-Autoridade.astro';
+import Oferta from '../components/sections/07-Oferta.astro';
+import Garantia from '../components/sections/08-Garantia.astro';
+import Faq from '../components/sections/09-Faq.astro';
+import CtaFinal from '../components/sections/10-CtaFinal.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Clube das Profs">
+  <Hero />
+  <Dores />
+  <ComoFunciona />
+  <Beneficios />
+  <ProvaSocial />
+  <Autoridade />
+  <Oferta />
+  <Garantia />
+  <Faq />
+  <CtaFinal />
+</Layout>
