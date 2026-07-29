@@ -1,6 +1,34 @@
 ---
+// Conteúdo: CONTENT.md §Seção 1. Variante ativa: A1 (foco em economia de tempo).
+// Variante A2 (foco em engajamento) fica pronta pro teste A/B, só trocando a classe
+// HERO-PC-A1 → HERO-PC-A2 e o headline/subheadline abaixo pelos de A2.
+import CtaButton from '../ui/CtaButton.astro';
+
+const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
 ---
 
-<section class="HERO-PC-A1">
-  <!-- Conteúdo: CONTENT.md §Seção 1. Classe HERO-* exigida por GTM-EVENTS.md (click_cta_top). -->
+<section class="HERO-PC-A1 py-[40px] md:py-[60px]">
+  <div class="max-w-6xl mx-auto px-space-md grid grid-cols-1 md:grid-cols-2 gap-space-lg items-center">
+    <div>
+      <h1 class="font-heading font-semibold text-[28px] md:text-[48px] leading-tight text-clube-azul-escuro">
+        Planeje aulas memoráveis para o 1º ao 5º ano em <strong>minutos</strong> — não em horas.
+      </h1>
+      <p class="mt-space-md text-base md:text-lg font-body text-clube-azul-escuro">
+        Centenas de atividades prontas, projetos completos e atualizações toda semana, no Clube das Profs.
+      </p>
+
+      <div class="mt-space-lg flex flex-wrap items-center gap-space-md">
+        <CtaButton variant="primary" href={CHECKOUT_URL}>Quero entrar no Clube agora</CtaButton>
+        <CtaButton variant="secondary" href="#beneficios">Ver tudo o que está incluso</CtaButton>
+      </div>
+
+      <p class="mt-space-md text-sm font-body text-clube-azul-escuro">
+        ✨ +45 mil professoras impactadas • Assinatura anual com acesso completo
+      </p>
+    </div>
+
+    <!-- Imagem pendente (docs/reference/MEDIA-TODO.md: "Hero — banner lateral"). Placeholder
+         reserva o espaço (evita CLS) até o asset real ser copiado para public/images/. -->
+    <div class="aspect-[4/3] w-full rounded-radius-lg bg-clube-azul-claro" role="img" aria-label="Prof Jaque apresentando o Clube das Profs"></div>
+  </div>
 </section>
