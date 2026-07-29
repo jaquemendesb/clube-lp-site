@@ -17,6 +17,7 @@
 - Raios (`STYLE-SPEC.md` §4): `radius-sm 8`, `radius-md 15`, `radius-lg 20`, `radius-xl 25`.
 - Seletores/ids exigidos pelo GTM (`docs/reference/GTM-EVENTS.md`) precisam sobreviver no HTML: classe contendo `HERO-` na seção 1, classe contendo `BENEFICIOS-CTA` ao redor do CTA da seção 4, classe contendo `OFERTA-` na seção 7, id `#clube-valor` na seção 7, id `#fechamento-cta` na seção 10, classe `.lp-clube-sec12-accordion .accordion-title` no acordeão da seção 9 (nome herdado do Flatsome — manter literal mesmo a seção sendo a 9).
 - Estrutura de pastas de `SPEC.md` §Estrutura de pastas é a referência — não inventar layout alternativo.
+- **Nota pós-Task 1 (deviation aceita):** `@astrojs/tailwind` (integração clássica) está abandonado e não tem versão compatível com o Astro atual — não usar. O projeto usa Tailwind v4 via `@tailwindcss/vite` (plugin do Vite, configurado em `astro.config.mjs` como `vite: { plugins: [tailwindcss()] }`, não `integrations: [tailwind()]`). `tailwind.config.mjs` continua existindo e é a fonte de `theme.extend` (cores/espaçamento/raios/fontes) via a diretiva `@config "../../tailwind.config.mjs";` em `src/styles/global.css` — as próximas tasks editam `theme.extend` normalmente, como previsto originalmente.
 
 ---
 
@@ -54,7 +55,10 @@ Expected: build termina sem erro, gera `dist/index.html` (a página default do t
 
 - [ ] **Step 4: Commit**
 
-Adiado para a Task 5 (primeiro commit cobre o scaffold inteiro) — não commitar parcialmente aqui.
+```bash
+git add package.json package-lock.json astro.config.mjs tsconfig.json tailwind.config.mjs .gitignore src public
+git commit -m "chore: scaffold Astro + Tailwind via CLI"
+```
 
 ---
 
@@ -163,6 +167,13 @@ npm run build
 
 Expected: build sem erro (tokens.css ainda não está importado em lugar nenhum — isso acontece na Task 4, `Layout.astro` — então este passo só confirma que `tailwind.config.mjs` não quebrou a sintaxe).
 
+- [ ] **Step 5: Commit**
+
+```bash
+git add tailwind.config.mjs src/styles/tokens.css src/assets/fonts/.gitkeep src/assets/icons/.gitkeep public/images/.gitkeep
+git commit -m "feat: adicionar design tokens (cores, espaçamento, raios, fontes)"
+```
+
 ---
 
 ### Task 3: Componente `CtaButton` único
@@ -217,6 +228,13 @@ A animação de entrada (`bounceIn`, `STYLE-SPEC.md` §6) e o ícone do WhatsApp
 Criar temporariamente em `src/pages/index.astro` um import e uso do `CtaButton` (`<CtaButton variant="primary" href="#">teste</CtaButton>`), rodar `npm run build`, confirmar que compila sem erro de tipos, depois reverter esse uso temporário (a integração real com `index.astro` acontece na Task 4).
 
 Expected: `npm run build` sem erro de TypeScript/Astro.
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add src/components/ui/CtaButton.astro
+git commit -m "feat: adicionar componente CtaButton (3 variantes, classes legadas preservadas)"
+```
 
 ---
 
@@ -422,17 +440,23 @@ npm run build
 
 Expected: build sem erro, `dist/index.html` gerado contendo as classes/ids exigidos (`HERO-`, `OFERTA-`, `clube-valor`, `fechamento-cta`, `lp-clube-sec12-accordion` só existe como comentário nesta fase — vai virar HTML real quando a Seção 9 ganhar conteúdo).
 
+- [ ] **Step 6: Commit**
+
+```bash
+git add src/layouts/Layout.astro src/components/sections src/pages/index.astro
+git commit -m "feat: montar layout base e as 10 seções da LP (esqueleto vazio)"
+```
+
 ---
 
-### Task 5: `.gitignore`, `git init` e primeiro commit
+### Task 5: Verificação final do `.gitignore` e do histórico
 
 **Files:**
 - Modify: `.gitignore` (gerado pelo scaffold da Task 1 — conferir que cobre `node_modules/`, `dist/`, `.astro/`)
-- Create: commit inicial do repositório
 
 **Interfaces:**
-- Consumes: todos os arquivos criados nas Tasks 1-4.
-- Produces: repositório git inicializado com o scaffold completo em um único commit — daqui pra frente, cada seção preenchida com copy vira commit próprio.
+- Consumes: todos os commits das Tasks 1-4 (repositório já inicializado antes da Task 1, com um commit prévio contendo os documentos de planejamento).
+- Produces: repositório com o scaffold completo distribuído em commits sequenciais, working tree limpo.
 
 - [ ] **Step 1: Conferir o `.gitignore` gerado pelo `create astro`**
 
@@ -446,32 +470,16 @@ dist/
 .env.production
 ```
 
-Se algo estiver faltando, completar manualmente.
+Se algo estiver faltando, completar manualmente e commitar (`git add .gitignore && git commit -m "chore: completar .gitignore"`).
 
-- [ ] **Step 2: Inicializar o repositório**
-
-```bash
-git init
-```
-
-- [ ] **Step 3: Stage e commit do scaffold completo**
-
-```bash
-git add package.json package-lock.json astro.config.mjs tsconfig.json tailwind.config.mjs .gitignore src public docs PRD.md SPEC.md CONTENT.md CLAUDE.md
-git commit -m "chore: scaffold inicial do projeto Astro + Tailwind
-
-Estrutura de pastas, design tokens e as 10 seções da LP como esqueleto
-vazio, conforme SPEC.md. Sem copy (CONTENT.md) nem assets reais ainda."
-```
-
-- [ ] **Step 4: Verificar o estado do repositório**
+- [ ] **Step 2: Verificar o estado do repositório**
 
 ```bash
 git status
 git log --oneline
 ```
 
-Expected: working tree limpo, um commit no histórico.
+Expected: working tree limpo, um commit por task (Tasks 1-4) mais o commit prévio dos documentos de planejamento — nenhum arquivo untracked ou modificado sobrando.
 
 ---
 
