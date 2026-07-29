@@ -9,9 +9,11 @@ const selos = [
 ];
 ---
 
-<section class="py-[40px] md:py-[60px]">
+<section class="py-[40px] md:py-[60px] bg-clube-amarelo/10">
   <div class="max-w-3xl mx-auto px-space-md text-center">
-    <img src={iconSelo.src} width="96" height="96" alt="Selo de 7 dias de garantia" class="mx-auto" />
+    <div class="mx-auto flex h-32 w-32 items-center justify-center rounded-full bg-clube-branco shadow-md">
+      <img src={iconSelo.src} width="96" height="96" alt="Selo de 7 dias de garantia" />
+    </div>
     <h2 class="mt-space-sm font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro">
       Você tem <strong>7 dias</strong> para conhecer o Clube por dentro.
     </h2>
@@ -22,7 +24,7 @@ const selos = [
 
     <div class="mt-space-lg grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
       {selos.map((selo) => (
-        <p class="rounded-radius-md shadow-sm bg-clube-branco p-space-sm font-body text-sm text-clube-azul-escuro">{selo}</p>
+        <p class="rounded-radius-xl shadow-sm bg-clube-branco p-space-md font-body text-sm text-clube-azul-escuro">{selo}</p>
       ))}
     </div>
 
