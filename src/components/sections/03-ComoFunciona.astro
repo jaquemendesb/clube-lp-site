@@ -16,7 +16,7 @@ const passos = [
 ];
 ---
 
-<section class="py-[40px] md:py-[60px]">
+<section class="py-[40px] md:py-[60px] bg-clube-azul-claro/10">
   <div class="max-w-6xl mx-auto px-space-md">
     <p class="text-center font-body text-sm uppercase tracking-wide text-clube-rosa">COMO FUNCIONA</p>
     <h2 class="mt-space-xs font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center max-w-3xl mx-auto">
@@ -26,8 +26,10 @@ const passos = [
     <div class="mt-space-xl grid grid-cols-1 md:grid-cols-3 gap-space-lg">
       {passos.map((passo, i) => (
         <div class="text-center">
-          <span class="font-heading font-semibold text-4xl text-clube-rosa">{String(i + 1).padStart(2, '0')}</span>
-          <h3 class="mt-space-xs font-heading text-lg text-clube-azul-escuro">{passo.titulo}</h3>
+          <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-clube-rosa font-heading font-semibold text-xl text-clube-branco">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+          <h3 class="mt-space-sm font-heading text-lg text-clube-azul-escuro">{passo.titulo}</h3>
           <p class="mt-space-xs font-body text-clube-azul-escuro">{passo.texto}</p>
         </div>
       ))}
