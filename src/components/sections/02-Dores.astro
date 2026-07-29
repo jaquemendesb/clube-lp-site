@@ -15,7 +15,7 @@ const dores = [
 ];
 ---
 
-<section class="py-[40px] md:py-[60px]">
+<section class="py-[40px] md:py-[60px] bg-clube-bege">
   <div class="max-w-6xl mx-auto px-space-md">
     <h2 class="font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center">
       Se você sente isso no dia a dia da sala de aula...
@@ -23,8 +23,10 @@ const dores = [
 
     <div class="mt-space-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md">
       {dores.map((dor) => (
-        <div class="bg-clube-branco rounded-radius-lg shadow-sm p-space-md text-center">
-          <img src={dor.icon.src} width="48" height="48" alt="" class="mx-auto" />
+        <div class="bg-clube-branco rounded-radius-xl shadow-md p-space-md text-center">
+          <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-clube-rosa/15">
+            <img src={dor.icon.src} width="28" height="28" alt="" />
+          </div>
           <p class="mt-space-sm font-body text-clube-azul-escuro"><strong>{dor.forte}</strong> {dor.resto}</p>
         </div>
       ))}
