@@ -1,0 +1,31 @@
+---
+// src/components/ui/CtaButton.astro
+interface Props {
+  variant: 'primary' | 'secondary' | 'support';
+  href: string;
+  class?: string;
+}
+
+const { variant, href, class: className = '' } = Astro.props;
+
+// Classes legadas do Flatsome — não renomear (CLAUDE.md §Decisões já tomadas).
+const legacyClass: Record<Props['variant'], string> = {
+  primary: 'lp-clube-button',
+  secondary: 'lp-clube-button-secondary',
+  support: 'lp-clube-button-suporte',
+};
+
+// Estilo visual por variante (STYLE-SPEC.md §6).
+const variantClass: Record<Props['variant'], string> = {
+  primary:
+    'inline-block bg-clube-amarelo text-clube-azul-escuro font-heading font-semibold text-lg px-space-lg py-space-sm rounded-radius-md',
+  secondary:
+    'inline-block text-clube-azul-escuro font-body underline underline-offset-4',
+  support:
+    'inline-block border border-clube-branco text-clube-branco font-body px-space-md py-space-xs rounded-radius-md',
+};
+---
+
+<a href={href} class={`${legacyClass[variant]} ${variantClass[variant]} ${className}`}>
+  <slot />
+</a>
