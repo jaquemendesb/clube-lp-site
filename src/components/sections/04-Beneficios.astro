@@ -72,7 +72,7 @@ const beneficios = [
 
     <div class="mt-space-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-md">
       {beneficios.map((item) => (
-        <div class="rounded-radius-lg shadow-sm overflow-hidden bg-clube-bege">
+        <div class="rounded-radius-xl shadow-md motion-safe:transition-shadow motion-safe:hover:shadow-lg overflow-hidden bg-clube-bege">
           {item.capa && (
             <Image src={item.capa} alt="" width={480} height={270} loading="lazy" class="w-full aspect-[16/9] object-cover" />
           )}
