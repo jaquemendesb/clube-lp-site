@@ -33,9 +33,14 @@
   font-weight: 400;
   font-display: swap;
 }
+/* Nexa Regular NÃO é usada aqui (licença não cobre uso em texto de página — o arquivo
+   original fica em src/assets/fonts/Nexa-Regular.ttf só como referência histórica).
+   Substituta escolhida para o corpo de texto: Poppins Regular (Google Fonts, licença
+   OFL), geometricamente muito próxima da Nexa (mesmo "a" e "g" de história única,
+   contadores circulares) — self-hosted aqui pra manter a regra de @font-face local. */
 @font-face {
-  font-family: 'Nexa';
-  src: url('/fonts/Nexa-Regular.ttf');
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Regular.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }

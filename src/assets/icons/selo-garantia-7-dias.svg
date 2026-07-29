@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Selo de 7 dias de garantia">
+  <circle cx="120" cy="120" r="112" fill="#FFD055"/>
+  <circle cx="120" cy="120" r="100" fill="#FFFFFF" stroke="#24224C" stroke-width="2.5" stroke-dasharray="4 5"/>
+  <text x="120" y="92" font-family="Montserrat Alternates, Arial, sans-serif" font-size="20" font-weight="600" text-anchor="middle" fill="#DD60A0" letter-spacing="3">GARANTIA</text>
+  <text x="120" y="150" font-family="Montserrat Alternates, Arial, sans-serif" font-size="56" font-weight="700" text-anchor="middle" fill="#24224C">7 DIAS</text>
+  <text x="120" y="178" font-family="Nexa, Arial, sans-serif" font-size="16" text-anchor="middle" fill="#24224C" letter-spacing="0.5">100% do valor de volta</text>
+  <g fill="none" stroke="#DD60A0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M108 200 L118 210 L138 188"/>
+  </g>
+</svg>

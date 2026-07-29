@@ -29,7 +29,7 @@ export default {
       fontFamily: {
         heading: ['"Montserrat Alternates"', 'sans-serif'],
         script: ['"Rialto Script"', 'cursive'],
-        body: ['Nexa', 'sans-serif'],
+        body: ['Poppins', 'sans-serif'], // Nexa Regular não pode ser usada em texto de página (licença) — ver tokens.css
       },
     },
   },

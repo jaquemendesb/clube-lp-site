@@ -1,12 +1,17 @@
 ---
-// Conteúdo: CONTENT.md §Seção 2.
-// Ícones dor-*.svg ainda não copiados (docs/reference/MEDIA-TODO.md) — fallback com emoji, prioridade baixa.
+// Conteúdo: CONTENT.md §Seção 2. Ícones reais (docs/reference/MEDIA-TODO.md).
+import iconRelogio from '../../assets/icons/dor-relogio.svg';
+import iconTurma from '../../assets/icons/dor-turma.svg';
+import iconAtencao from '../../assets/icons/dor-atencao.svg';
+import iconBusca from '../../assets/icons/dor-busca.svg';
+import iconQualidade from '../../assets/icons/dor-qualidade.svg';
+
 const dores = [
-  { emoji: '⏱️', forte: 'Falta de tempo', resto: 'para planejar aulas com qualidade.' },
-  { emoji: '👥', forte: 'Turma desnivelada', resto: '— alunos em ritmos diferentes ao mesmo tempo.' },
-  { emoji: '🎯', forte: 'Atenção que escapa', resto: 'entre uma atividade e outra.' },
-  { emoji: '🔍', forte: 'Horas garimpando', resto: 'atividades em dezenas de sites.' },
-  { emoji: '📄', forte: 'Material que não funciona', resto: '— bonito no PDF, vazio em sala.' },
+  { icon: iconRelogio, forte: 'Falta de tempo', resto: 'para planejar aulas com qualidade.' },
+  { icon: iconTurma, forte: 'Turma desnivelada', resto: '— alunos em ritmos diferentes ao mesmo tempo.' },
+  { icon: iconAtencao, forte: 'Atenção que escapa', resto: 'entre uma atividade e outra.' },
+  { icon: iconBusca, forte: 'Horas garimpando', resto: 'atividades em dezenas de sites.' },
+  { icon: iconQualidade, forte: 'Material que não funciona', resto: '— bonito no PDF, vazio em sala.' },
 ];
 ---
 
@@ -19,7 +24,7 @@ const dores = [
     <div class="mt-space-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md">
       {dores.map((dor) => (
         <div class="bg-clube-branco rounded-radius-lg shadow-sm p-space-md text-center">
-          <span class="text-3xl" aria-hidden="true">{dor.emoji}</span>
+          <img src={dor.icon.src} width="48" height="48" alt="" class="mx-auto" />
           <p class="mt-space-sm font-body text-clube-azul-escuro"><strong>{dor.forte}</strong> {dor.resto}</p>
         </div>
       ))}

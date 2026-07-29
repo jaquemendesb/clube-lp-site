@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Comunidade no WhatsApp">
+  <path d="M44 50 H120 a14 14 0 0 1 14 14 V108 a14 14 0 0 1 -14 14 H66 L46 142 L52 122 H44 a14 14 0 0 1 -14 -14 V64 a14 14 0 0 1 14 -14 Z"
+        fill="#FFD055" stroke="#24224C" stroke-width="3" stroke-linejoin="round"/>
+  <g fill="#24224C">
+    <circle cx="58" cy="86" r="5"/>
+    <circle cx="82" cy="86" r="5"/>
+    <circle cx="106" cy="86" r="5"/>
+  </g>
+  <path d="M116 100 H158 a12 12 0 0 1 12 12 V148 a12 12 0 0 1 -12 12 H152 L162 178 L142 160 H116 a12 12 0 0 1 -12 -12 V112 a12 12 0 0 1 12 -12 Z"
+        fill="#DD60A0" stroke="#24224C" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M136 124 c-5 -7 -16 -3 -16 7 c0 9 16 19 16 19 s16 -10 16 -19 c0 -10 -11 -14 -16 -7 Z"
+        fill="#FFFFFF" stroke="#24224C" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

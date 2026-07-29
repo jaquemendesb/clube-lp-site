@@ -1,6 +1,7 @@
 ---
-// Conteúdo: CONTENT.md §Seção 8. Selo de garantia (selo-garantia-7-dias.svg) ainda não
-// copiado (docs/reference/MEDIA-TODO.md) — fallback emoji 🛡️ conforme a própria spec permite.
+// Conteúdo: CONTENT.md §Seção 8.
+import iconSelo from '../../assets/icons/selo-garantia-7-dias.svg';
+
 const selos = [
   '✅ Sem letra miúda (condições claras na hora da compra)',
   '✅ Reembolso direto (processo simples pelo suporte)',
@@ -10,7 +11,7 @@ const selos = [
 
 <section class="py-[40px] md:py-[60px]">
   <div class="max-w-3xl mx-auto px-space-md text-center">
-    <span class="text-5xl" aria-hidden="true">🛡️</span>
+    <img src={iconSelo.src} width="96" height="96" alt="Selo de 7 dias de garantia" class="mx-auto" />
     <h2 class="mt-space-sm font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro">
       Você tem <strong>7 dias</strong> para conhecer o Clube por dentro.
     </h2>
