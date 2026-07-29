@@ -1,5 +1,8 @@
 ---
 // Conteúdo: CONTENT.md §Seção 6. Sem CTA nesta seção (reservado para a Seção 7).
+import { Image } from 'astro:assets';
+import fotoProfJaque from '../../assets/images/prof-jaque.jpg';
+
 const selos = [
   { emoji: '🎓', texto: 'Pedagoga com formação e prática em sala de aula' },
   { emoji: '👩‍🏫', texto: '+45 mil profs já usam os materiais da Jaque' },
@@ -9,8 +12,14 @@ const selos = [
 
 <section class="py-[40px] md:py-[60px] bg-clube-azul-escuro">
   <div class="max-w-6xl mx-auto px-space-md grid grid-cols-1 md:grid-cols-2 gap-space-lg items-center">
-    <!-- Foto pendente (docs/reference/MEDIA-TODO.md: "Seção 6 — banner principal da Jaque"). -->
-    <div class="aspect-[4/3] w-full rounded-radius-lg bg-clube-azul-claro" role="img" aria-label="Prof Jaque Mendes"></div>
+    <Image
+      src={fotoProfJaque}
+      alt="Prof Jaque Mendes, criadora do Clube das Profs"
+      width={600}
+      height={800}
+      loading="lazy"
+      class="aspect-[4/3] w-full rounded-radius-lg object-cover object-top"
+    />
 
     <div>
       <p class="font-body text-sm uppercase tracking-wide text-clube-rosa">QUEM CRIA OS RECURSOS DO CLUBE</p>

@@ -5,7 +5,10 @@
 // 40.235.494/0001-08 → 45.702.642/0001-70 pode já ter concluído ou estar em curso) — não
 // hardcodar sem confirmar com a Jaque. URLs das políticas também pendentes (não existiam
 // resolvidas no protótipo anterior). Placeholders abaixo marcados explicitamente.
+import { Image } from 'astro:assets';
 import CtaButton from '../ui/CtaButton.astro';
+import logoClube from '../../assets/images/footer-logo-clube.png';
+import logoJaquePink from '../../assets/images/footer-logo-jaque-pink.svg';
 
 const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
 const WHATSAPP_URL = 'https://api.whatsapp.com/send?phone=554784983702&text=Ol%C3%A1,%20Clube%20das%20Profs';
@@ -38,15 +41,19 @@ const selos = ['🔒 Pagamento seguro', '⚡ Acesso imediato', '🛟 7 dias de g
   </div>
 
   <footer class="mt-space-2xl border-t border-clube-azul-claro/20 pt-space-md">
-    <div class="max-w-3xl mx-auto px-space-md text-center font-body text-xs text-clube-azul-claro">
-      <p>
+    <div class="max-w-3xl mx-auto px-space-md text-center">
+      <div class="flex flex-wrap justify-center items-center gap-space-lg">
+        <Image src={logoClube} alt="Clube das Profs" width={150} height={75} loading="lazy" class="h-10 w-auto bg-clube-bege rounded p-1" />
+        <img src={logoJaquePink.src} width="270" height="95" loading="lazy" alt="Prof Jaque Mendes" class="h-8 w-auto" />
+      </div>
+      <p class="mt-space-md font-body text-xs text-clube-azul-claro">
         Copyright {anoAtual} © Prof Jaque Mendes. Todos os direitos reservados. Jaque Mendes JB Educa Ltda. CNPJ:
         [CNPJ a confirmar — ver CLAUDE.md §Decisões em aberto]
       </p>
-      <p class="mt-space-xs flex flex-wrap justify-center gap-space-sm">
-        <a href="#" class="underline underline-offset-4">Política de Privacidade</a>
-        <a href="#" class="underline underline-offset-4">Política de Vendas</a>
-        <a href="#" class="underline underline-offset-4">Avisos Legais</a>
+      <p class="mt-space-xs flex flex-wrap justify-center gap-space-sm font-body text-xs text-clube-azul-claro">
+        <a href="https://clubedasprofs.com.br/politica-de-privacidade/" class="underline underline-offset-4">Política de Privacidade</a>
+        <a href="https://clubedasprofs.com.br/politica-de-cancelamento-e-reembolso/" class="underline underline-offset-4">Política de Vendas</a>
+        <a href="https://clubedasprofs.com.br/termos-de-uso/" class="underline underline-offset-4">Avisos Legais</a>
       </p>
     </div>
   </footer>

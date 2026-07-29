@@ -1,51 +1,61 @@
 ---
 // Conteúdo: CONTENT.md §Seção 4. O CTA do meio tem wrapper com classe "BENEFICIOS-CTA"
 // (GTM-EVENTS.md, evento click_cta_middle).
+import { Image } from 'astro:assets';
 import CtaButton from '../ui/CtaButton.astro';
 import iconProjetos from '../../assets/icons/beneficio-projetos.svg';
 import iconBonusIa from '../../assets/icons/beneficio-bonus-ia.svg';
 import iconComunidade from '../../assets/icons/beneficio-comunidade.svg';
+import capaPortugues from '../../assets/images/beneficio-capa-portugues.jpg';
+import capaMatematica from '../../assets/images/beneficio-capa-matematica.jpg';
+import capaDemaisDisciplinas from '../../assets/images/beneficio-capa-demais-disciplinas.jpg';
 
 const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
 
-// Só 3 das 6 categorias têm ícone dedicado (docs/reference/MEDIA-TODO.md) — as outras 3
-// não têm ícone pendente, ficam só com texto.
+// As 3 primeiras categorias usam a capa de mockup real (baixada de clubedasprofs.com.br,
+// ver docs/reference/MEDIA-TODO.md); as outras 3 têm ícone dedicado.
 const beneficios = [
   {
     categoria: 'Língua Portuguesa',
     beneficio: 'Leitura, escrita e produção de texto com sequências prontas',
     exemplo: 'Projeto de 20 semanas para destravar a produção textual da turma',
     icon: null,
+    capa: capaPortugues,
   },
   {
     categoria: 'Matemática',
     beneficio: 'As 4 operações trabalhadas com material atrativo e progressivo',
     exemplo: 'Jogos imprimíveis de adição, subtração, multiplicação e divisão por nível',
     icon: null,
+    capa: capaMatematica,
   },
   {
     categoria: 'Demais disciplinas',
     beneficio: 'História, Geografia, Ciências e datas comemorativas, alinhados à BNCC',
     exemplo: 'Apresentações prontas + atividades por turma para a Semana da Pátria',
     icon: null,
+    capa: capaDemaisDisciplinas,
   },
   {
     categoria: 'Projetos exclusivos',
     beneficio: 'Jornadas completas que você só encontra dentro do Clube',
     exemplo: '"Descomplicando a Caligrafia" em 7 passos e "Jornada Textual e Literária"',
     icon: iconProjetos,
+    capa: null,
   },
   {
     categoria: 'Bônus — mini formação IA',
     beneficio: 'Inteligência Artificial aplicada ao dia a dia da prof',
     exemplo: 'Gerar relatórios, planos de aula e adaptações em segundos',
     icon: iconBonusIa,
+    capa: null,
   },
   {
     categoria: 'Comunidade WhatsApp',
     beneficio: 'Grupo exclusivo com profs trocando ideia e atualizações semanais',
     exemplo: 'Avisos em primeira mão sempre que um material novo entra no Clube',
     icon: iconComunidade,
+    capa: null,
   },
 ];
 ---
@@ -62,11 +72,16 @@ const beneficios = [
 
     <div class="mt-space-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-md">
       {beneficios.map((item) => (
-        <div class="rounded-radius-lg shadow-sm p-space-md bg-clube-bege">
+        <div class="rounded-radius-lg shadow-sm overflow-hidden bg-clube-bege">
+          {item.capa && (
+            <Image src={item.capa} alt="" width={480} height={270} loading="lazy" class="w-full aspect-[16/9] object-cover" />
+          )}
+          <div class="p-space-md">
           {item.icon && <img src={item.icon.src} width="40" height="40" alt="" />}
           <h3 class="mt-space-xs font-heading text-lg text-clube-azul-escuro">{item.categoria}</h3>
           <p class="mt-space-xs font-body text-clube-azul-escuro">{item.beneficio}</p>
           <p class="mt-space-xs font-body text-sm text-clube-azul-escuro/80">{item.exemplo}</p>
+          </div>
         </div>
       ))}
     </div>

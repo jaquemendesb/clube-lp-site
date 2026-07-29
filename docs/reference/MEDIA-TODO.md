@@ -2,6 +2,8 @@
 
 > Cópia interna, trazida de `LP - Conteúdo e Planejamento/lp/MEDIA-TODO.md`. Serve de checklist para o que precisa ser baixado/produzido e colocado em `public/images/` e `src/assets/icons/` deste repo (ver `SPEC.md` §Imagens).
 
+> **✅ Atualização 2026-07-29:** as imagens reais de `clubedasprofs.com.br` (Seção 4 capas, Seção 5 depoimentos + galeria, Seção 6 foto da Jaque, logos do rodapé) foram baixadas do site ao vivo e já estão em `src/assets/images/`, importadas via `astro:assets` nos componentes correspondentes. A pendência de troca de prints da Seção 5 (abaixo) foi conferida e **não é uma troca real** — ver nota na Seção 5. Continuam pendentes apenas: foto/banner do Hero (nunca existiu, nem no site atual) e produção de novas mídias que não têm equivalente no site ao vivo.
+
 ## ✅ Já existentes — baixar da Kinsta e trazer para este repo
 
 Base URL atual: `https://clubedasprofs.com.br/wp-content/uploads/2026/04/` (pasta pode mudar de mês — nome do arquivo é estável).
@@ -18,13 +20,15 @@ Base URL atual: `https://clubedasprofs.com.br/wp-content/uploads/2026/04/` (past
 | `beneficio-bonus-ia.svg` | Seção 4 — "Bônus IA" | `src/assets/icons/beneficio-bonus-ia.svg` |
 | `beneficio-comunidade.svg` | Seção 4 — "Comunidade WhatsApp" | `src/assets/icons/beneficio-comunidade.svg` |
 
-## Imagens de depoimento (Seção 5) — reais, já existentes
+## Imagens de depoimento (Seção 5) — reais, já baixadas
 
-Base: `https://clubedasprofs.com.br/wp-content/uploads/2025/07/`
+Base: `https://clubedasprofs.com.br/wp-content/uploads/2025/07/` → `src/assets/images/depoimento-*`
 
-- `Feedback-Pamela-1.jpg`, `Feedback-Pamela-2.jpg` → Prof Pamela
-- `Feedback-Maria.jpg` → associado hoje a "Prof Rosa" (⚠️ ver `CONTENT.md` §Seção 5 — possível troca)
-- `Feedback-Rosa.jpg` → associado hoje a "Prof Maria Regina" (⚠️ mesma pendência)
+- `Feedback-Pamela-1.jpg` → Prof Pamela — conferido: print é da própria "Pamela Santos".
+- `Feedback-Maria.jpg` → card "Prof Rosa" — conferido: o texto do print é assinado "Rosa Caroline de Liz Martinelli". **O card está certo**, só o nome do arquivo original (na biblioteca WP) é que usa "Maria" por engano.
+- `Feedback-Rosa.jpg` → card "Prof Maria Regina" — conferido: o texto do print é assinado "Maira Regina Schossler". **O card está certo**, mesmo caso de nome de arquivo trocado.
+
+Conclusão: **não é necessário trocar nada** — a pendência registrada em `CONTENT.md` §Seção 5 / `CLAUDE.md` §Decisões em aberto era sobre o nome do arquivo, não sobre qual print aparece em qual card. Pode reportar à Jaque como resolvida.
 
 ## Galeria de prova social (Seção 5) — curadoria de 6
 
@@ -41,29 +45,24 @@ IDs originais da biblioteca WP, para conferência visual em `https://clubedaspro
 
 Demais arquivos disponíveis no mapeamento original (`Feedback-02` a `Feedback-13`) caso queiram trocar algum da curadoria — conferir com a Jaque se necessário.
 
-## Imagens já existentes reaproveitadas (baixar da biblioteca WP)
+## Imagens já baixadas do site ao vivo (2026-07-29)
 
-| Onde aparece | Descrição |
-|---|---|
-| Hero — imagem decorativa | Ilustração pequena ao lado do headline |
-| Hero — banner lateral (desktop) | Banner grande |
-| Hero — banner (mobile/tablet) | Versão mobile do banner |
-| Seção 4 — capa Língua Portuguesa | Capa da categoria |
-| Seção 4 — capa Matemática | Capa da categoria |
-| Seção 4 — capa Demais disciplinas | Capa da categoria |
-| Seção 6 — banner principal da Jaque | Foto profissional |
-| Seção 6 — foto perfil pequena | Foto estilo Instagram |
-| Seção 10 — logos do rodapé (2 imagens) | Selos/logos institucionais |
+| Onde aparece | Arquivo original (clubedasprofs.com.br) | Destino neste repo |
+|---|---|---|
+| Seção 4 — capa Língua Portuguesa | `Fundo-Imagens-Atividade-e-Mockup-Celular-Portugues.jpg` | `src/assets/images/beneficio-capa-portugues.jpg` |
+| Seção 4 — capa Matemática | `Fundo-Imagens-Atividade-e-Mockup-Celular-Matematica.jpg` | `src/assets/images/beneficio-capa-matematica.jpg` |
+| Seção 4 — capa Demais disciplinas | `Fundo-Imagens-Atividade-e-Mockup-Celular-Cie-Hist-Geo.jpg` | `src/assets/images/beneficio-capa-demais-disciplinas.jpg` |
+| Seção 6 — foto da Prof Jaque | `Prof-Jaque.jpg` | `src/assets/images/prof-jaque.jpg` |
+| Seção 10 — logo Clube das Profs | `Logotipo-Clube-das-Profs-Completo-Colorido.png` | `src/assets/images/footer-logo-clube.png` |
+| Seção 10 — logo Prof Jaque (vetor rosa) | `Logo-Prof-Jaque-Mendes-Pink-368x128px.svg` | `src/assets/images/footer-logo-jaque-pink.svg` |
 
-## Mídias ainda pendentes de produção
+Ícones de dor/benefício/garantia (Seção 2, 4, 8) já foram copiados em sessão anterior — ver `CLAUDE.md` §Decisões já tomadas.
 
-Convenções: WebP (qualidade 80) ou AVIF; exportar 2x para retina; cores conforme `docs/reference/STYLE-SPEC.md` §1; prefixo de nome `lp-clube-*`.
+## Mídias que ainda não existem (nem no site atual)
 
 | Item | Prioridade | Observação |
 |---|---|---|
-| 3 imagens da Seção 4 (Projetos, Bônus IA, Comunidade) | **Alta — bloqueia go-live** | Sem elas a grade fica com furos visíveis |
-| Selo de garantia (Seção 8) | Média | Aceita fallback temporário (emoji 🛡️) |
-| 5 ícones de dor (Seção 2) | Baixa | Font Awesome/ícone genérico funciona como fallback |
-| 3 depoimentos textuais (Seção 5) | **Alta — bloqueia go-live** | Depende da Jaque validar/confirmar os 3 prints e resolver a pendência de troca |
+| Hero — foto/composição de imagem | Média | O site ao vivo hoje também não tem imagem no Hero — não é uma regressão, mas seria uma melhoria real sobre a versão atual |
+| Logo "Prof Jaque" em versão texto colorido (usado no rodapé do site atual) | Baixa | Substituído aqui pela versão vetorial rosa (`footer-logo-jaque-pink.svg`), que já cobre a função |
 
-**Bloqueador real para publicar:** imagens da Seção 4 e resolução da pendência de depoimentos da Seção 5. O resto aceita fallback.
+**Não há mais bloqueador de mídia para publicar** as Seções 4, 5, 6 e 10 — a única mídia realmente pendente é a foto/imagem do Hero, que é uma melhoria nova, não uma correção de regressão.

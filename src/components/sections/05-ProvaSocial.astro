@@ -1,13 +1,23 @@
 ---
 // Conteúdo: CONTENT.md §Seção 5.
 //
-// ⚠️ PENDENTE (CONTENT.md §Seção 5 / CLAUDE.md §Decisões em aberto): os prints das profs
-// "Rosa" e "Maria Regina" parecem trocados pelo nome do arquivo original — não publicar
-// esta seção sem a Jaque confirmar. Fotos aqui são placeholders (cor sólida) até essa
-// pendência ser resolvida e os prints reais serem copiados para public/images/
-// (docs/reference/MEDIA-TODO.md). Cada card já tem uma transcrição textual oculta
-// (.sr-only) do trecho de depoimento citado em CONTENT.md, para acessibilidade —
-// atualizar com a transcrição completa quando o print for confirmado.
+// ✅ Pendência de CONTENT.md/CLAUDE.md resolvida: os nomes dos ARQUIVOS originais
+// (Feedback-Maria.jpg / Feedback-Rosa.jpg) estavam trocados em relação à autora do
+// comentário, mas o conteúdo de cada print bate com o card certo — conferido visualmente
+// baixando os prints reais de clubedasprofs.com.br em 2026-07-29 (Feedback-Maria.jpg é o
+// comentário de "Rosa Caroline de Liz Martinelli"; Feedback-Rosa.jpg é o de "Maira Regina
+// Schossler"). Não há troca de card a fazer — só o nome do arquivo de origem é que confunde.
+import { Image } from 'astro:assets';
+import depoimentoPamela from '../../assets/images/depoimento-pamela.jpg';
+import depoimentoRosa from '../../assets/images/depoimento-rosa.png';
+import depoimentoMariaRegina from '../../assets/images/depoimento-maria-regina.png';
+import galeria01 from '../../assets/images/galeria-01.webp';
+import galeria02 from '../../assets/images/galeria-02.jpg';
+import galeria03 from '../../assets/images/galeria-03.jpg';
+import galeria04 from '../../assets/images/galeria-04.jpg';
+import galeria05 from '../../assets/images/galeria-05.jpg';
+import galeria06 from '../../assets/images/galeria-06.jpg';
+
 const stats = [
   { numero: '+45 mil', label: 'professoras impactadas pelos materiais da Prof Jaque' },
   { numero: '1º ao 5º', label: 'ano do Fundamental I cobertos por ano e disciplina' },
@@ -16,10 +26,29 @@ const stats = [
 ];
 
 const depoimentos = [
-  { nome: 'Prof Pamela', resumo: 'alunos mais interessados' },
-  { nome: 'Prof Rosa', resumo: 'aulas mais divertidas e pensantes' },
-  { nome: 'Prof Maria Regina', resumo: 'mais criativa' },
+  {
+    nome: 'Prof Pamela',
+    resumo: 'alunos mais interessados',
+    print: depoimentoPamela,
+    transcricao: 'Pamela Santos, no WhatsApp: "Oiii eu faço parte e estou amando tudo! 💕"',
+  },
+  {
+    nome: 'Prof Rosa',
+    resumo: 'aulas mais divertidas e pensantes',
+    print: depoimentoRosa,
+    transcricao:
+      'Rosa Caroline de Liz Martinelli comentou: "Olá Jaque; sempre fui apaixonada por aulas diferentes, divertidas e acima de tudo pensante. A arte humaniza a população, e sua forma de abordagem é magnífica. Abraços."',
+  },
+  {
+    nome: 'Prof Maria Regina',
+    resumo: 'mais criativa',
+    print: depoimentoMariaRegina,
+    transcricao:
+      'Maira Regina Schossler, avaliação 5 estrelas: "Eu simplesmente estou amando todas as atividades. Essa é o máximo! Com toda certeza minhas aulas serão diferentes esse ano, bem mais criativas. Grata por tudo! Abraço de urso pra ti! Bom ano letivo para todas nós!"',
+  },
 ];
+
+const galeria = [galeria01, galeria02, galeria03, galeria04, galeria05, galeria06];
 ---
 
 <section class="py-[40px] md:py-[60px]">
@@ -41,17 +70,31 @@ const depoimentos = [
     <div class="mt-space-xl grid grid-cols-1 md:grid-cols-3 gap-space-md">
       {depoimentos.map((depo) => (
         <div class="rounded-radius-lg shadow-md bg-clube-branco p-space-md">
-          <div class="aspect-[4/3] w-full rounded-radius-md bg-clube-azul-claro" role="img" aria-label={`Print de depoimento de ${depo.nome}`}></div>
+          <Image
+            src={depo.print}
+            alt=""
+            width={480}
+            height={360}
+            loading="lazy"
+            class="aspect-[4/3] w-full rounded-radius-md bg-clube-bege object-contain p-space-xs"
+          />
           <p class="mt-space-sm font-heading text-clube-azul-escuro">{depo.nome}</p>
           <p class="font-body text-sm text-clube-azul-escuro">"{depo.resumo}"</p>
-          <span class="sr-only">Depoimento de {depo.nome}: {depo.resumo}.</span>
+          <span class="sr-only">{depo.transcricao}</span>
         </div>
       ))}
     </div>
 
     <div class="mt-space-xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-space-sm">
-      {Array.from({ length: 6 }).map((_, i) => (
-        <div class="aspect-square rounded-radius-sm bg-clube-azul-claro" role="img" aria-label={`Print de depoimento ${i + 1}`}></div>
+      {galeria.map((foto, i) => (
+        <Image
+          src={foto}
+          alt={`Print de depoimento real de uma professora sobre o Clube das Profs (${i + 1})`}
+          width={240}
+          height={240}
+          loading="lazy"
+          class="aspect-square w-full rounded-radius-sm object-cover"
+        />
       ))}
     </div>
   </div>
