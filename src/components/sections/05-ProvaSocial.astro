@@ -51,7 +51,7 @@ const depoimentos = [
 const galeria = [galeria01, galeria02, galeria03, galeria04, galeria05, galeria06];
 ---
 
-<section class="py-[40px] md:py-[60px]">
+<section class="py-[40px] md:py-[60px] bg-clube-bege">
   <div class="max-w-6xl mx-auto px-space-md">
     <p class="text-center font-body text-sm uppercase tracking-wide text-clube-rosa">QUEM JÁ ESTÁ DENTRO</p>
     <h2 class="mt-space-xs font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center">
@@ -60,7 +60,7 @@ const galeria = [galeria01, galeria02, galeria03, galeria04, galeria05, galeria0
 
     <div class="mt-space-xl grid grid-cols-2 lg:grid-cols-4 gap-space-md">
       {stats.map((stat) => (
-        <div class="text-center rounded-radius-md shadow-sm p-space-md bg-clube-branco">
+        <div class="text-center rounded-radius-xl shadow-md p-space-md bg-clube-branco">
           <p class="font-heading font-semibold text-2xl text-clube-azul-escuro">{stat.numero}</p>
           <p class="mt-space-xs font-body text-sm text-clube-azul-escuro">{stat.label}</p>
         </div>
@@ -69,7 +69,7 @@ const galeria = [galeria01, galeria02, galeria03, galeria04, galeria05, galeria0
 
     <div class="mt-space-xl grid grid-cols-1 md:grid-cols-3 gap-space-md">
       {depoimentos.map((depo) => (
-        <div class="rounded-radius-lg shadow-md bg-clube-branco p-space-md">
+        <div class="rounded-radius-xl shadow-md bg-clube-branco p-space-md">
           <Image
             src={depo.print}
             alt=""
