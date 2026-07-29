@@ -30,12 +30,14 @@ Aplicação original: a maioria dos tokens já estava hard-coded em cada shortco
 
 ## 2. Tipografia
 
-Carregar via `@font-face` local (fontes ficam em `src/assets/fonts/`, copiadas de `LP - Conteúdo e Planejamento/brand/fonts/` na configuração inicial do projeto):
+> **⚠️ Atualização pós-implementação:** a licença da Nexa Regular não cobre uso em texto de página (decisão da Jaque) — o corpo de texto usa **Poppins Regular** (Google Fonts, OFL) no lugar, self-hosted em `public/fonts/Poppins-Regular.woff2`. Ver `SPEC.md` §Design tokens para o racional completo (escolhida por comparação visual direta com a Nexa). O bloco de `@font-face` abaixo é o original deste documento — desatualizado no item Nexa, mantido para histórico.
+
+Carregar via `@font-face` local (fontes reais ficam em `public/fonts/`, copiadas de `LP - Conteúdo e Planejamento/brand/fonts/` na configuração inicial do projeto):
 
 ```css
 @font-face { font-family: 'Montserrat Alternates'; src: url('/fonts/MontserratAlternates-SemiBold.ttf'); font-weight: 600; font-display: swap; }
 @font-face { font-family: 'Montserrat Alternates'; src: url('/fonts/MontserratAlternates-Regular.ttf'); font-weight: 400; font-display: swap; }
-@font-face { font-family: 'Nexa'; src: url('/fonts/Nexa-Regular.ttf'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Poppins'; src: url('/fonts/Poppins-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
 @font-face { font-family: 'Rialto Script'; src: url('/fonts/rialtoscript-regular.ttf'); font-weight: 400; font-display: swap; }
 ```
 
@@ -44,7 +46,7 @@ Carregar via `@font-face` local (fontes ficam em `src/assets/fonts/`, copiadas d
 | H1 / H2 | Montserrat Alternates SemiBold | Headlines de seção e do Hero |
 | H3 | Montserrat Alternates Regular | Títulos de card |
 | Subtítulo decorativo | Rialto Script | Uso pontual, no máximo 1 por seção |
-| Body | Nexa Regular | Parágrafos, listas, copy de card |
+| Body | Poppins Regular (substituta da Nexa Regular — licença) | Parágrafos, listas, copy de card |
 
 ### Escala
 

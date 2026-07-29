@@ -12,9 +12,11 @@ Aqui SIM é um projeto de software normal: `git init`, `npm install`, build, tes
 
 ## Estado atual do projeto
 
-Ainda não há código — só os documentos de planejamento (`PRD.md`, `SPEC.md`, `CONTENT.md`, `docs/reference/`). Não existe `package.json`, `src/` nem `astro.config.mjs` ainda.
+O scaffold está implementado e funcional: Astro + Tailwind (v4, via `@tailwindcss/vite` — ver nota abaixo), design tokens, componente `CtaButton`, e as 10 seções da LP já preenchidas com a copy de `CONTENT.md`. Assets de marca reais (fontes Montserrat Alternates + Rialto Script, ícones SVG de dor/benefício/garantia) já copiados. Comandos: `npm run dev`, `npm run build`, `npm run check` (typecheck via `astro check`).
 
-Quando o scaffold for criado, seguir a estrutura de pastas e a stack definidas em `SPEC.md` §Stack e §Estrutura de pastas (Astro + Tailwind compilado no build). Os comandos (`npm install`, `npm run dev`, `npm run build`) e o restante deste guia devem ser atualizados neste arquivo assim que o `package.json` existir.
+**Nota Tailwind v4:** `@astrojs/tailwind` (integração clássica que `SPEC.md` originalmente assumia) está abandonado e incompatível com o Astro atual. O projeto usa Tailwind v4 via `@tailwindcss/vite`; `tailwind.config.mjs` continua sendo a fonte de `theme.extend` (cores/espaçamento/raios/fontes), carregado via `@config` em `src/styles/global.css`.
+
+Falta: fotos reais (Hero, depoimentos da Seção 5, Prof Jaque na Seção 6, logos do rodapé), resolver as pendências marcadas em `## Decisões em aberto` abaixo, e configurar deploy (Dockerfile/Portainer ainda não existem).
 
 ## Leia primeiro, nesta ordem
 
@@ -29,13 +31,14 @@ O conteúdo original foi produzido em `../LP - Conteúdo e Planejamento/` (fora 
 
 **Por que não juntamos as duas pastas num projeto só:** a pasta irmã carrega a biblioteca de marca inteira (todas as variações de logo em `.eps`, todas as fontes, o PDF de branding) e um protótipo abandonado — nada disso deveria entrar no histórico de git deste repo, que é pra ficar enxuto. A solução foi trazer para dentro apenas o que é necessário para construir (copiado, não referenciado por caminho externo), deixando a pasta irmã como arquivo/planejamento maior, que também serve outros assuntos além desta LP.
 
-Assets de marca (fontes, ícones, logos) precisam ser **copiados para dentro deste repo** (`src/assets/`) a partir de `../LP - Conteúdo e Planejamento/brand/` — esse é o único ponto que ainda depende da pasta irmã, e é um passo de configuração inicial (cópia única), não uma referência viva. Ver `SPEC.md` §Assets para a lista exata do que copiar.
+Assets de marca (fontes, ícones) já foram **copiados para dentro deste repo** a partir de `../LP - Conteúdo e Planejamento/brand/` — fontes em `public/fonts/`, ícones em `src/assets/icons/`. Faltam ainda: fotos reais (Hero, depoimentos, Prof Jaque) e os logos do rodapé. Ver `SPEC.md` §Assets para a lista.
 
 ## Decisões já tomadas (não reabrir sem motivo)
 
 - Stack: Astro + Tailwind (build estático, zero/mínimo JS) — ver `SPEC.md` §Stack para justificativa.
 - Checkout continua no WooCommerce existente (`https://clubedasprofs.com.br/?add-to-cart=17307`), sem mudança de gateway ou de motor de assinatura (YITH) neste projeto — isso é acompanhado à parte em `../Checkout/notas-integracao-hotmart.md`.
 - Classes CSS dos 3 CTAs (`lp-clube-button`, `lp-clube-button-secondary`, `lp-clube-button-suporte`) devem ser preservadas literalmente no HTML novo — o contêiner GTM já existente será configurado (ou reaproveitado) em cima desses seletores. Trocar o nome da classe quebra a instrumentação de analytics.
+- **Nexa Regular não pode ser usada em texto de página** — a licença não cobre esse uso. Substituta no `font-body`: **Poppins** (Google Fonts, OFL), self-hosted em `public/fonts/Poppins-Regular.woff2` — escolhida por comparação visual direta com a Nexa (mesmo desenho de "a"/"g" de história única, contadores circulares). O arquivo original da Nexa fica em `src/assets/fonts/Nexa-Regular.ttf` só como referência histórica, sem `@font-face`.
 
 ## Decisões em aberto (checar com a Jaque antes de travar)
 
