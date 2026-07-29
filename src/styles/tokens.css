@@ -1,4 +1,26 @@
 /* src/styles/tokens.css */
+:root {
+  --clube-azul-escuro: #24224C;
+  --clube-azul-claro: #C0E3EB;
+  --clube-rosa: #DD60A0;
+  --clube-amarelo: #FFD055;
+  --clube-bege: #F9F3ED;
+  --clube-branco: #FFFFFF;
+
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+
+  --radius-sm: 8px;
+  --radius-md: 15px;
+  --radius-lg: 20px;
+  --radius-xl: 25px;
+}
+
 @font-face {
   font-family: 'Montserrat Alternates';
   src: url('/fonts/MontserratAlternates-SemiBold.ttf');
