@@ -54,9 +54,9 @@ const jsonLd = {
       Perguntas frequentes
     </h2>
 
-    <div class="lp-clube-sec12-accordion mt-space-xl divide-y divide-clube-azul-claro">
+    <div class="lp-clube-sec12-accordion mt-space-xl space-y-space-sm">
       {faq.map((item, i) => (
-        <div class="py-space-sm">
+        <div class="rounded-radius-lg bg-clube-branco shadow-sm p-space-md">
           <button
             type="button"
             class="accordion-title w-full flex items-center justify-between gap-space-sm text-left font-heading text-clube-azul-escuro"
@@ -65,7 +65,7 @@ const jsonLd = {
             id={`faq-question-${i}`}
           >
             <span>{item.pergunta}</span>
-            <span class="accordion-icon shrink-0" aria-hidden="true">+</span>
+            <span class="accordion-icon shrink-0 flex h-8 w-8 items-center justify-center rounded-full bg-clube-azul-claro/30 text-lg" aria-hidden="true">+</span>
           </button>
           <div
             id={`faq-answer-${i}`}
