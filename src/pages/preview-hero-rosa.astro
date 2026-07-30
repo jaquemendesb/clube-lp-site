@@ -1,0 +1,14 @@
+---
+// Página de comparação temporária — não é parte da LP publicada oficialmente.
+// Mostra o Hero na variante rosa/amarelo (a que está ao vivo hoje na home)
+// junto com a próxima seção, para dar contexto de como o degradê termina.
+// noindex: não deve ser indexada pelo Google.
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/sections/01-Hero.astro';
+import Dores from '../components/sections/02-Dores.astro';
+---
+
+<Layout title="Preview — Hero rosa" noindex>
+  <Hero scheme="rosa" />
+  <Dores />
+</Layout>

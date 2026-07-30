@@ -6,12 +6,14 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
   description = 'Centenas de atividades prontas, projetos completos e novidades toda semana para o Fundamental I (1º ao 5º ano). Pagamento único, acesso de 12 meses. Conheça o Clube das Profs.',
   image = '/images/og-image.jpg',
+  noindex = false,
 } = Astro.props;
 
 const SITE_URL = 'https://lp.clubedasprofs.com.br';
@@ -32,6 +34,7 @@ const GTM_ID = 'GTM-PMNMPH7P';
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta name="theme-color" content="#24224C" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate icon" href="/favicon.ico" />

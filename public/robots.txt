@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /preview-*
 
 Sitemap: https://lp.clubedasprofs.com.br/sitemap.xml

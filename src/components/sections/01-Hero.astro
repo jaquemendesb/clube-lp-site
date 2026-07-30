@@ -2,14 +2,38 @@
 // Conteúdo: CONTENT.md §Seção 1. Variante ativa: A1 (foco em economia de tempo).
 // Variante A2 (foco em engajamento) fica pronta pro teste A/B, só trocando a classe
 // HERO-PC-A1 → HERO-PC-A2 e o headline/subheadline abaixo pelos de A2.
+//
+// Variante de cor (scheme): 'rosa' é a versão ao vivo hoje. 'azul' existe só para
+// comparação lado a lado (ver src/pages/preview-hero-*.astro) — não é uma decisão
+// tomada, é uma prévia publicada a pedido da Jaque.
 import CtaButton from '../ui/CtaButton.astro';
 import Icon from '../ui/Icon.astro';
 
+interface Props {
+  scheme?: 'rosa' | 'azul';
+}
+
+const { scheme = 'rosa' } = Astro.props;
+
 const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
+
+const schemes = {
+  rosa: {
+    sectionBg: 'bg-gradient-to-br from-clube-bege via-clube-rosa/25 to-clube-amarelo/20',
+    blobText: 'bg-clube-rosa/40',
+    panel: 'bg-gradient-to-br from-clube-rosa to-clube-amarelo',
+  },
+  azul: {
+    sectionBg: 'bg-gradient-to-br from-clube-bege via-clube-azul-claro/40 to-clube-azul-claro/15',
+    blobText: 'bg-clube-azul-claro/50',
+    panel: 'bg-gradient-to-br from-clube-azul-claro to-clube-azul-escuro',
+  },
+};
+const s = schemes[scheme];
 ---
 
-<section class="HERO-PC-A1 relative isolate overflow-hidden py-[40px] md:py-[60px] bg-gradient-to-br from-clube-bege via-clube-rosa/25 to-clube-amarelo/20">
-  <div class="blob-breathe absolute -top-24 -left-24 -z-10 h-72 w-72 rounded-full bg-clube-rosa/40 blur-2xl" aria-hidden="true" style="animation-delay: 2s"></div>
+<section class={`HERO-PC-A1 relative isolate overflow-hidden py-[40px] md:py-[60px] ${s.sectionBg}`}>
+  <div class={`blob-breathe absolute -top-24 -left-24 -z-10 h-72 w-72 rounded-full ${s.blobText} blur-2xl`} aria-hidden="true" style="animation-delay: 2s"></div>
   <div class="max-w-6xl mx-auto px-space-md grid grid-cols-1 md:grid-cols-2 gap-space-lg items-center">
     <div>
       <h1 class="font-heading font-semibold text-[28px] md:text-[48px] leading-tight text-clube-azul-escuro">
@@ -38,7 +62,7 @@ const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
       <div class="blob-breathe absolute -top-6 -right-6 -z-10 h-40 w-40 rounded-full bg-clube-azul-escuro/30" aria-hidden="true"></div>
       <!-- Cartão de cor sólido atrás do vídeo, levemente girado — dá peso visual real
            em vez de só um blob desfocado. -->
-      <div class="absolute -bottom-4 -right-4 -z-10 h-full w-full rotate-3 rounded-radius-xl bg-gradient-to-br from-clube-rosa to-clube-amarelo" aria-hidden="true"></div>
+      <div class={`absolute -bottom-4 -right-4 -z-10 h-full w-full rotate-3 rounded-radius-xl ${s.panel}`} aria-hidden="true"></div>
       <div class="absolute -top-3 left-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-clube-azul-escuro/90 px-space-sm py-1 shadow-md backdrop-blur-sm">
         <span class="relative flex h-2 w-2">
           <span class="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-clube-rosa opacity-75"></span>
