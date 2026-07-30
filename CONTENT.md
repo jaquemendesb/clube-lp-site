@@ -22,7 +22,7 @@ Duas variantes para Teste A/B (headline). Escolher qual entra ativa por padrão;
 - Headline: "Transforme alunos dispersos em uma turma **engajada** — mesmo com níveis diferentes."
 - Subheadline: "Recursos lúdicos e eficazes para professoras do 1º ao 5º ano, prontos para usar em sala."
 
-**Bloco de confiança (ambas variantes):** "✨ +45 mil professoras impactadas • Assinatura anual com acesso completo"
+**Bloco de confiança (ambas variantes):** "✨ +45 mil professoras impactadas • Acesso de 12 meses, pagamento único" *(reescrito em 2026-07-30 — ver nota abaixo sobre remover "assinatura" da copy)*
 
 **Imagem:** foto da Prof Jaque ou composição com mockups dos materiais (ainda como placeholder no protótipo anterior — produção de imagem pendente).
 
@@ -128,9 +128,13 @@ Duas variantes (Teste B) com o mesmo conteúdo, mudando só o destaque do preço
 
 **Variante B1 — destaque na parcela:** "nas condições atuais — de ~~R$ 547,00~~ por **12x de R$ 44,70**, ou R$ 447,00 à vista no PIX/Boleto/Cartão"
 
+**Legenda abaixo do preço:** "(compra parcelada no cartão — não é assinatura, sem cobrança mensal recorrente)" *(reescrito em 2026-07-30 — ver nota abaixo)*
+
 **Variante B2 — destaque no valor total:** "de ~~R$ 547,00~~ por apenas **R$ 447,00 à vista**, ou parcele em 12x de R$ 44,70 no cartão"
 
-**Selos abaixo do CTA:** 🔒 Pagamento seguro (PIX, boleto e cartão) · ⚡ Acesso imediato (liberado após confirmação) · 💬 Suporte por e-mail (atendimento@clubedasprofs.com.br)
+**Selos abaixo do CTA:** 📅 Acesso por 12 meses — não é assinatura · 🔒 Pagamento seguro (PIX, boleto e cartão) · ⚡ Acesso imediato (liberado após confirmação) · 💬 Suporte por e-mail (atendimento@clubedasprofs.com.br)
+
+**Nota 2026-07-30 — remoção de "assinatura" da copy:** a Jaque reportou que professoras que parcelam a compra no cartão às vezes entram em contato pedindo para "cancelar o plano" achando que é assinatura recorrente (mesma lógica de uma mensalidade que se cancela a qualquer momento) — quando na verdade é uma compra parcelada comum: as parcelas seguem até o fim independente de a pessoa continuar usando o Clube ou não. Para reduzir essa confusão, toda menção a "assinatura" foi removida da copy voltada ao usuário (Hero, Seção 7, FAQ) e substituída por linguagem que deixa claro que é pagamento único (à vista ou parcelado), não assinatura recorrente. A pergunta 2 do FAQ (abaixo) foi reescrita para endereçar esse cenário de confusão diretamente.
 
 **⚠️ PENDENTE:** confirmar que R$ 547,00 é valor de referência real (já praticado antes), não apenas um número inflado para efeito de âncora — risco de "preço fantasma" pelo CDC se questionado. A copy já evita "para sempre"/"preço fixo" de propósito, porque a condição de R$447 é vigente mas não permanente.
 
@@ -153,7 +157,7 @@ Política confirmada com a Jaque: **7 dias de garantia incondicional**, alinhada
 Usar `faq_schema`/JSON-LD (ver `SPEC.md` §SEO) — não é só accordion visual.
 
 1. **Para quais turmas são direcionadas as atividades do Clube?** — No geral, os materiais atendem todas as turmas do Ensino Fundamental I (1º ao 5º ano). Quando necessário, algumas atividades são identificadas por turma específica; no site, a maioria dos materiais é organizada por turma ou marcada como válida para todas. Nem toda atividade traz o código BNCC explícito, mas todas são alinhadas à BNCC. *(corrigido em 2026-07-30 — a versão anterior superdimensionava o quanto cada atividade é identificada por turma/BNCC)*
-2. **Como funciona o acesso ao Clube? É por assinatura anual ou mensal?** — O acesso é anual: você paga uma vez e tem acesso ilimitado a todos os recursos por 12 meses. Não é assinatura mensal recorrente — nada é cobrado automaticamente depois, e ao final você decide se renova. Pode parcelar em até 12x no cartão ou pagar à vista no PIX, boleto ou cartão.
+2. **O acesso ao Clube é assinatura? Se eu parcelar, posso cancelar as parcelas depois?** — Não é assinatura: é um pagamento único que dá acesso de 12 meses, à vista ou parcelado em até 12x no cartão. Não tem renovação automática nem cobrança recorrente. Atenção: se você parcelar no cartão, as parcelas seguem até o fim mesmo que você pare de usar o Clube antes — é como qualquer compra parcelada, não uma assinatura que dá pra cancelar no meio. Ao final dos 12 meses de acesso, você decide se quer continuar. *(reescrito em 2026-07-30 — ver nota na Seção 7)*
 3. **Qual é a frequência de atualização de materiais no Clube?** — Atualizamos o Clube toda semana com novos materiais e atividades, garantindo recursos sempre atualizados pra você. Os avisos chegam em primeira mão pela nossa comunidade no WhatsApp.
 4. **Como acesso o Clube depois que efetuar a compra?** — E-mail com login e senha após confirmação de pagamento. Imediato no PIX/cartão (minutos); até 2 dias úteis no boleto. Acesso 24h, computador ou celular.
 5. **Quais são as formas de pagamento?** — Cartão de crédito (até 12x sem juros, 12x de R$44,70); PIX (à vista, liberado em minutos); Boleto (à vista, liberado após compensação).
