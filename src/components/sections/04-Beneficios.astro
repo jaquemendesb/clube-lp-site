@@ -66,23 +66,25 @@ const beneficios = [
 ];
 ---
 
-<section id="beneficios" class="py-[40px] md:py-[60px] bg-clube-branco">
+<section id="beneficios" class="relative isolate overflow-hidden py-[40px] md:py-[60px] bg-clube-branco">
+  <div class="absolute -top-20 right-0 -z-10 h-72 w-72 rounded-full bg-clube-azul-claro/25 blur-3xl" aria-hidden="true"></div>
+  <div class="absolute bottom-0 -left-20 -z-10 h-64 w-64 rounded-full bg-clube-rosa/10 blur-3xl" aria-hidden="true"></div>
   <div class="max-w-6xl mx-auto px-space-md">
-    <div class="flex items-center justify-center gap-space-sm">
+    <div data-reveal class="flex items-center justify-center gap-space-sm">
       <span class="h-[3px] w-8 rounded-full bg-clube-rosa" aria-hidden="true"></span>
       <p class="text-center font-heading font-bold text-sm uppercase tracking-[0.15em] text-clube-rosa">Acesso completo por 12 meses</p>
       <span class="h-[3px] w-8 rounded-full bg-clube-rosa" aria-hidden="true"></span>
     </div>
-    <h2 class="mt-space-xs font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center">
+    <h2 data-reveal class="mt-space-xs font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center">
       Tudo o que você recebe ao entrar no <strong>Clube das Profs</strong>
     </h2>
-    <p class="mt-space-xs font-body text-clube-azul-escuro text-center max-w-2xl mx-auto">
+    <p data-reveal class="mt-space-xs font-body text-clube-azul-escuro text-center max-w-2xl mx-auto">
       6 frentes de conteúdo, organizadas para você abrir e usar — sem montar nada do zero.
     </p>
 
     <div class="mt-space-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-md">
-      {beneficios.map((item) => (
-        <div class="rounded-radius-xl shadow-md motion-safe:transition-shadow motion-safe:hover:shadow-lg overflow-hidden bg-clube-bege">
+      {beneficios.map((item, i) => (
+        <div data-reveal style={`--reveal-delay: ${i * 70}ms`} class="rounded-radius-xl shadow-md motion-safe:transition-shadow motion-safe:hover:shadow-lg overflow-hidden bg-clube-bege">
           {item.capa && (
             <Image src={item.capa} alt="" width={480} height={270} loading="lazy" class="w-full aspect-[16/9] object-cover" />
           )}

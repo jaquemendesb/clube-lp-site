@@ -20,18 +20,18 @@ const passos = [
 
 <section class="py-[40px] md:py-[60px] bg-clube-azul-claro/10">
   <div class="max-w-6xl mx-auto px-space-md">
-    <div class="flex items-center justify-center gap-space-sm">
+    <div data-reveal class="flex items-center justify-center gap-space-sm">
       <span class="h-[3px] w-8 rounded-full bg-clube-rosa" aria-hidden="true"></span>
       <p class="text-center font-heading font-bold text-sm uppercase tracking-[0.15em] text-clube-rosa">Como funciona</p>
       <span class="h-[3px] w-8 rounded-full bg-clube-rosa" aria-hidden="true"></span>
     </div>
-    <h2 class="mt-space-sm font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center max-w-3xl mx-auto">
+    <h2 data-reveal class="mt-space-sm font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center max-w-3xl mx-auto">
       Em <strong>3 passos simples</strong> você sai do planejamento na correria para aulas prontas com sobra de tempo.
     </h2>
 
     <div class="mt-space-xl grid grid-cols-1 md:grid-cols-3 gap-space-lg">
       {passos.map((passo, i) => (
-        <div class="rounded-radius-xl bg-clube-branco p-space-lg text-center shadow-md motion-safe:transition-shadow motion-safe:hover:shadow-lg">
+        <div data-reveal style={`--reveal-delay: ${i * 90}ms`} class="rounded-radius-xl bg-clube-branco p-space-lg text-center shadow-md motion-safe:transition-shadow motion-safe:hover:shadow-lg">
           <span class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-clube-rosa font-heading font-semibold text-xl text-clube-branco">
             {String(i + 1).padStart(2, '0')}
           </span>
@@ -42,7 +42,7 @@ const passos = [
     </div>
 
     <div class="mt-space-xl grid grid-cols-1 sm:grid-cols-2 gap-space-md">
-      <div class="flex items-start gap-space-sm rounded-radius-xl bg-clube-amarelo p-space-lg shadow-md">
+      <div data-reveal class="flex items-start gap-space-sm rounded-radius-xl bg-clube-amarelo p-space-lg shadow-md">
         <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-clube-branco/60">
           <Icon name="calendar" class="h-6 w-6 text-clube-azul-escuro" />
         </span>
@@ -50,7 +50,7 @@ const passos = [
           <strong class="font-heading">Toda semana</strong> — novos materiais entram no Clube. Você nunca fica sem opção nova para a próxima aula.
         </p>
       </div>
-      <div class="flex items-start gap-space-sm rounded-radius-xl bg-clube-azul-escuro p-space-lg shadow-md">
+      <div data-reveal style="--reveal-delay: 100ms" class="flex items-start gap-space-sm rounded-radius-xl bg-clube-azul-escuro p-space-lg shadow-md">
         <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-clube-branco/10">
           <Icon name="chat" class="h-6 w-6 text-clube-bege" />
         </span>

@@ -15,15 +15,17 @@ const dores = [
 ];
 ---
 
-<section class="py-[40px] md:py-[60px] bg-clube-bege">
+<section class="relative isolate overflow-hidden py-[40px] md:py-[60px] bg-clube-bege">
+  <div class="absolute -top-10 -left-16 -z-10 h-64 w-64 rounded-full bg-clube-rosa/15 blur-3xl" aria-hidden="true"></div>
+  <div class="absolute -bottom-16 -right-10 -z-10 h-56 w-56 rounded-full bg-clube-amarelo/20 blur-3xl" aria-hidden="true"></div>
   <div class="max-w-6xl mx-auto px-space-md">
-    <h2 class="font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center">
+    <h2 data-reveal class="font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center">
       Se você sente isso no dia a dia da sala de aula...
     </h2>
 
     <div class="mt-space-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md">
-      {dores.map((dor) => (
-        <div class="bg-clube-branco rounded-radius-xl shadow-md p-space-md text-center">
+      {dores.map((dor, i) => (
+        <div data-reveal style={`--reveal-delay: ${i * 80}ms`} class="bg-clube-branco rounded-radius-xl shadow-md p-space-md text-center motion-safe:transition-shadow motion-safe:hover:shadow-lg">
           <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-clube-rosa/15">
             <img src={dor.icon.src} width="28" height="28" alt="" />
           </div>
@@ -32,7 +34,7 @@ const dores = [
       ))}
     </div>
 
-    <div class="mt-space-xl bg-clube-azul-escuro rounded-radius-lg p-space-lg text-center">
+    <div data-reveal class="mt-space-xl bg-clube-azul-escuro rounded-radius-lg p-space-lg text-center">
       <p class="font-heading font-semibold text-xl md:text-2xl text-clube-bege">
         O <strong>Clube das Profs</strong> foi criado para resolver exatamente isso.
       </p>

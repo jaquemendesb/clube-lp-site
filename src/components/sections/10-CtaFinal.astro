@@ -24,22 +24,23 @@ const selos: { icon: 'lock' | 'zap' | 'shield-check'; texto: string }[] = [
 ];
 ---
 
-<section id="fechamento-cta" class="py-[40px] md:py-[60px] bg-gradient-to-b from-clube-azul-escuro to-black">
+<section id="fechamento-cta" class="relative isolate overflow-hidden py-[40px] md:py-[60px] bg-gradient-to-b from-clube-azul-escuro to-[#16152f]">
+  <div class="absolute -top-20 left-1/2 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-clube-rosa/10 blur-3xl" aria-hidden="true"></div>
   <div class="max-w-3xl mx-auto px-space-md text-center">
-    <div class="flex items-center justify-center gap-space-sm">
+    <div data-reveal class="flex items-center justify-center gap-space-sm">
       <span class="h-[3px] w-8 rounded-full bg-clube-amarelo" aria-hidden="true"></span>
       <p class="font-heading font-bold text-sm uppercase tracking-[0.15em] text-clube-amarelo">Você chegou até aqui por um motivo</p>
       <span class="h-[3px] w-8 rounded-full bg-clube-amarelo" aria-hidden="true"></span>
     </div>
-    <h2 class="mt-space-sm font-heading font-semibold text-[24px] md:text-[32px] text-clube-bege">
+    <h2 data-reveal class="mt-space-sm font-heading font-semibold text-[24px] md:text-[32px] text-clube-bege">
       A cada semana que passa, é uma semana de <strong>aulas prontas que você deixa de aproveitar</strong>.
     </h2>
-    <p class="mt-space-sm font-body text-clube-azul-claro">
+    <p data-reveal class="mt-space-sm font-body text-clube-azul-claro">
       Quanto antes você entra, mais semanas de material pronto, projetos completos e comunidade você usa — pelo mesmo
       investimento anual.
     </p>
 
-    <div class="mt-space-lg flex flex-wrap justify-center items-center gap-space-md">
+    <div data-reveal style="--reveal-delay: 100ms" class="mt-space-lg flex flex-wrap justify-center items-center gap-space-md">
       <CtaButton variant="primary" href={CHECKOUT_URL}>Quero entrar no Clube agora</CtaButton>
       <CtaButton variant="support" href={SUPPORT_EMAIL_URL}>Falar com o suporte</CtaButton>
     </div>

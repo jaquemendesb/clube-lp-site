@@ -49,22 +49,27 @@ const depoimentos = [
 ];
 
 const galeria = [galeria01, galeria02, galeria03, galeria04, galeria05, galeria06];
+
+// leve rotação alternada nas fotos da galeria, pra parecer fotos "jogadas" na mesa
+const rotacoes = ['-rotate-2', 'rotate-1', '-rotate-1', 'rotate-2', '-rotate-1', 'rotate-1'];
 ---
 
-<section class="py-[40px] md:py-[60px] bg-clube-bege">
+<section class="relative isolate overflow-hidden py-[40px] md:py-[60px] bg-clube-bege">
+  <div class="absolute top-0 right-0 -z-10 h-72 w-72 rounded-full bg-clube-amarelo/15 blur-3xl" aria-hidden="true"></div>
+  <div class="absolute -bottom-10 left-0 -z-10 h-64 w-64 rounded-full bg-clube-azul-claro/25 blur-3xl" aria-hidden="true"></div>
   <div class="max-w-6xl mx-auto px-space-md">
-    <div class="flex items-center justify-center gap-space-sm">
+    <div data-reveal class="flex items-center justify-center gap-space-sm">
       <span class="h-[3px] w-8 rounded-full bg-clube-rosa" aria-hidden="true"></span>
       <p class="text-center font-heading font-bold text-sm uppercase tracking-[0.15em] text-clube-rosa">Quem já está dentro</p>
       <span class="h-[3px] w-8 rounded-full bg-clube-rosa" aria-hidden="true"></span>
     </div>
-    <h2 class="mt-space-xs font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center">
+    <h2 data-reveal class="mt-space-xs font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center">
       Uma comunidade de profs que <strong>já transformou suas aulas</strong>.
     </h2>
 
     <div class="mt-space-xl grid grid-cols-2 lg:grid-cols-4 gap-space-md">
-      {stats.map((stat) => (
-        <div class="text-center rounded-radius-xl shadow-md p-space-md bg-clube-branco">
+      {stats.map((stat, i) => (
+        <div data-reveal style={`--reveal-delay: ${i * 70}ms`} class="text-center rounded-radius-xl shadow-md p-space-md bg-clube-branco motion-safe:transition-shadow motion-safe:hover:shadow-lg">
           <p class="font-heading font-semibold text-2xl text-clube-azul-escuro">{stat.numero}</p>
           <p class="mt-space-xs font-body text-sm text-clube-azul-escuro">{stat.label}</p>
         </div>
@@ -72,8 +77,8 @@ const galeria = [galeria01, galeria02, galeria03, galeria04, galeria05, galeria0
     </div>
 
     <div class="mt-space-xl grid grid-cols-1 md:grid-cols-3 gap-space-md">
-      {depoimentos.map((depo) => (
-        <div class="rounded-radius-xl shadow-md bg-clube-branco p-space-md">
+      {depoimentos.map((depo, i) => (
+        <div data-reveal style={`--reveal-delay: ${i * 90}ms`} class="rounded-radius-xl shadow-md bg-clube-branco p-space-md motion-safe:transition-shadow motion-safe:hover:shadow-lg">
           <Image
             src={depo.print}
             alt=""
@@ -91,14 +96,18 @@ const galeria = [galeria01, galeria02, galeria03, galeria04, galeria05, galeria0
 
     <div class="mt-space-xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-space-sm">
       {galeria.map((foto, i) => (
-        <Image
-          src={foto}
-          alt={`Print de depoimento real de uma professora sobre o Clube das Profs (${i + 1})`}
-          width={240}
-          height={240}
-          loading="lazy"
-          class="aspect-square w-full rounded-radius-sm object-cover"
-        />
+        // wrapper cuida do fade/translate da entrada; a rotação fica na imagem, num
+        // elemento separado, pra não competir com a mesma propriedade `transform`
+        <div data-reveal style={`--reveal-delay: ${i * 60}ms`}>
+          <Image
+            src={foto}
+            alt={`Print de depoimento real de uma professora sobre o Clube das Profs (${i + 1})`}
+            width={240}
+            height={240}
+            loading="lazy"
+            class={`aspect-square w-full rounded-radius-sm object-cover shadow-md motion-safe:transition-transform motion-safe:hover:rotate-0 motion-safe:hover:scale-105 ${rotacoes[i % rotacoes.length]}`}
+          />
+        </div>
       ))}
     </div>
   </div>

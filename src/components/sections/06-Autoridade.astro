@@ -11,9 +11,10 @@ const selos: { icon: 'graduation-cap' | 'user' | 'pencil'; texto: string }[] = [
 ];
 ---
 
-<section class="py-[40px] md:py-[60px] bg-gradient-to-b from-clube-azul-escuro to-black">
+<section class="py-[40px] md:py-[60px] bg-gradient-to-b from-clube-azul-escuro to-[#16152f]">
   <div class="max-w-6xl mx-auto px-space-md grid grid-cols-1 md:grid-cols-2 gap-space-lg items-center">
     <Image
+      data-reveal
       src={fotoProfJaque}
       alt="Prof Jaque Mendes, criadora do Clube das Profs"
       width={600}
@@ -22,7 +23,7 @@ const selos: { icon: 'graduation-cap' | 'user' | 'pencil'; texto: string }[] = [
       class="aspect-[4/3] w-full rounded-radius-xl shadow-lg object-cover object-top"
     />
 
-    <div>
+    <div data-reveal style="--reveal-delay: 100ms">
       <div class="flex items-center gap-space-sm">
         <span class="h-[3px] w-8 rounded-full bg-clube-rosa" aria-hidden="true"></span>
         <p class="font-heading font-bold text-sm uppercase tracking-[0.15em] text-clube-rosa">Quem cria os recursos do Clube</p>

@@ -50,13 +50,13 @@ const jsonLd = {
 
 <section class="py-[40px] md:py-[60px] bg-clube-branco">
   <div class="max-w-3xl mx-auto px-space-md">
-    <h2 class="font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center">
+    <h2 data-reveal class="font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center">
       Perguntas frequentes
     </h2>
 
     <div class="lp-clube-sec12-accordion mt-space-xl space-y-space-sm">
       {faq.map((item, i) => (
-        <div class="rounded-radius-lg bg-clube-bege shadow-sm p-space-md">
+        <div data-reveal style={`--reveal-delay: ${i * 60}ms`} class="rounded-radius-lg bg-clube-bege shadow-sm p-space-md">
           <button
             type="button"
             class="accordion-title w-full flex items-center justify-between gap-space-sm text-left font-heading text-clube-azul-escuro"

@@ -10,22 +10,24 @@ const selos = [
 ];
 ---
 
-<section class="py-[40px] md:py-[60px] bg-clube-amarelo/10">
+<section class="relative isolate overflow-hidden py-[40px] md:py-[60px] bg-clube-amarelo/10">
+  <div class="absolute -top-16 left-1/4 -z-10 h-64 w-64 rounded-full bg-clube-rosa/10 blur-3xl" aria-hidden="true"></div>
+  <div class="absolute -bottom-16 right-1/4 -z-10 h-64 w-64 rounded-full bg-clube-azul-claro/25 blur-3xl" aria-hidden="true"></div>
   <div class="max-w-3xl mx-auto px-space-md text-center">
-    <div class="mx-auto flex h-32 w-32 items-center justify-center rounded-full bg-clube-branco shadow-md">
+    <div data-reveal class="mx-auto flex h-32 w-32 items-center justify-center rounded-full bg-clube-branco shadow-md">
       <img src={iconSelo.src} width="96" height="96" alt="Selo de 7 dias de garantia" />
     </div>
-    <h2 class="mt-space-sm font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro">
+    <h2 data-reveal class="mt-space-sm font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro">
       Você tem <strong>7 dias</strong> para conhecer o Clube por dentro.
     </h2>
-    <p class="mt-space-sm font-body text-clube-azul-escuro">
+    <p data-reveal class="mt-space-sm font-body text-clube-azul-escuro">
       Entre, baixe os materiais, leve para a sala de aula e veja a turma reagir. Se em até 7 dias você sentir que o
       Clube não é para você, devolvemos <strong>100% do valor pago</strong> — sem questionamentos.
     </p>
 
     <div class="mt-space-lg grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
-      {selos.map((selo) => (
-        <p class="flex items-start gap-space-xs rounded-radius-xl shadow-sm bg-clube-branco p-space-md font-body text-sm text-clube-azul-escuro">
+      {selos.map((selo, i) => (
+        <p data-reveal style={`--reveal-delay: ${i * 80}ms`} class="flex items-start gap-space-xs rounded-radius-xl shadow-sm bg-clube-branco p-space-md font-body text-sm text-clube-azul-escuro">
           <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-clube-rosa" />
           <span>{selo}</span>
         </p>

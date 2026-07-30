@@ -30,13 +30,14 @@ const selos: { icon: 'calendar' | 'lock' | 'zap' | 'chat'; texto: string }[] = [
 ];
 ---
 
-<section class="OFERTA-B1 py-[40px] md:py-[60px] bg-gradient-to-b from-clube-azul-escuro to-black" id="clube-valor">
+<section class="OFERTA-B1 relative isolate overflow-hidden py-[40px] md:py-[60px] bg-gradient-to-b from-clube-azul-escuro to-[#16152f]" id="clube-valor">
+  <div class="absolute top-1/2 left-1/2 -z-10 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-clube-amarelo/10 blur-3xl" aria-hidden="true"></div>
   <div class="max-w-4xl mx-auto px-space-md">
-    <h2 class="font-heading font-semibold text-[24px] md:text-[32px] text-clube-bege text-center">
+    <h2 data-reveal class="font-heading font-semibold text-[24px] md:text-[32px] text-clube-bege text-center">
       Você recebe tudo isso por 1 ano
     </h2>
 
-    <ul class="mt-space-lg grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+    <ul data-reveal class="mt-space-lg grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
       {itens.map((item) => (
         <li class="font-body text-clube-azul-claro flex items-start gap-space-sm">
           <span aria-hidden="true" class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-clube-amarelo text-clube-azul-escuro">
@@ -47,7 +48,7 @@ const selos: { icon: 'calendar' | 'lock' | 'zap' | 'chat'; texto: string }[] = [
       ))}
     </ul>
 
-    <div class="mt-space-xl rounded-radius-xl shadow-lg bg-gradient-to-b from-clube-branco to-clube-bege p-space-lg text-center">
+    <div data-reveal style="--reveal-delay: 150ms" class="mt-space-xl rounded-radius-xl shadow-lg bg-gradient-to-b from-clube-branco to-clube-bege p-space-lg text-center">
       <p class="font-body text-clube-azul-escuro">
         nas condições atuais — de <span class="line-through">R$ 547,00</span> por
       </p>
