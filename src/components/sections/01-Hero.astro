@@ -12,18 +12,18 @@ const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
   <div class="max-w-6xl mx-auto px-space-md grid grid-cols-1 md:grid-cols-2 gap-space-lg items-center">
     <div>
       <h1 class="font-heading font-semibold text-[28px] md:text-[48px] leading-tight text-clube-azul-escuro">
-        Planeje aulas memoráveis para o 1º ao 5º ano em <strong>minutos</strong> — não em horas.
+        Planeje aulas memoráveis para o 1º ao 5º ano em <strong class="bg-gradient-to-r from-clube-rosa to-clube-amarelo bg-clip-text text-transparent">minutos</strong> — não em horas.
       </h1>
       <p class="mt-space-md text-base md:text-lg font-body text-clube-azul-escuro">
         Centenas de atividades prontas, projetos completos e atualizações toda semana, no Clube das Profs.
       </p>
 
-      <div class="mt-space-lg flex flex-wrap items-center gap-space-md">
+      <div class="hero-fade-in mt-space-lg flex flex-wrap items-center gap-space-md">
         <CtaButton variant="primary" href={CHECKOUT_URL}>Quero entrar no Clube agora</CtaButton>
         <CtaButton variant="secondary" href="#beneficios">Ver tudo o que está incluso</CtaButton>
       </div>
 
-      <div class="mt-space-md inline-flex items-center gap-space-xs rounded-full border border-clube-rosa/30 bg-clube-branco/70 px-space-md py-space-xs shadow-sm backdrop-blur-sm">
+      <div class="hero-fade-in mt-space-md inline-flex items-center gap-space-xs rounded-full border border-clube-rosa/30 bg-clube-branco/70 px-space-md py-space-xs shadow-sm backdrop-blur-sm" style="--fade-delay: 150ms">
         <Icon name="sparkle" class="h-4 w-4 shrink-0 text-clube-rosa" />
         <p class="font-body text-sm text-clube-azul-escuro">
           <strong class="font-semibold">+45 mil professoras</strong> impactadas • Acesso de 12 meses, pagamento único
@@ -33,8 +33,15 @@ const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
 
     <!-- Vídeo institucional já usado no Hero do site ao vivo (Vimeo). Substitui o placeholder
          de imagem — o Hero nunca teve foto estática, mas já tinha esse vídeo. -->
-    <div class="relative isolate">
-      <div class="absolute -top-6 -right-6 -z-10 h-40 w-40 rounded-full bg-clube-amarelo/20" aria-hidden="true"></div>
+    <div class="hero-fade-in relative isolate" style="--fade-delay: 100ms">
+      <div class="blob-breathe absolute -top-6 -right-6 -z-10 h-40 w-40 rounded-full bg-clube-amarelo/20" aria-hidden="true"></div>
+      <div class="absolute -top-3 left-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-clube-azul-escuro/90 px-space-sm py-1 shadow-md backdrop-blur-sm">
+        <span class="relative flex h-2 w-2">
+          <span class="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-clube-rosa opacity-75"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-clube-rosa"></span>
+        </span>
+        <span class="font-body text-xs font-medium text-clube-branco">Veja como funciona</span>
+      </div>
       <div class="relative w-full overflow-hidden rounded-radius-xl shadow-lg" style="padding:64.75% 0 0 0;">
         <iframe
           src="https://player.vimeo.com/video/1189191052?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1"
