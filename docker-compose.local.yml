@@ -6,11 +6,12 @@
 # uma rede local comum, e publica a porta 8080 pra testar em
 # http://localhost:8080 sem precisar de Traefik nem Swarm rodando aqui.
 #
-# O bloco "deploy:" do arquivo base é ignorado automaticamente pelo Compose
-# standalone (não é erro, só não faz nada fora de modo Swarm) — não precisa
+# O bloco "deploy:" do arquivo base (incluindo as labels do Traefik, que em
+# modo Swarm vivem dentro de deploy:) é ignorado automaticamente pelo Compose
+# standalone — não é erro, só não faz nada fora de modo Swarm. Não precisa
 # ser sobrescrito aqui.
 services:
-  clube-lp:
+  clube_lp_web:
     build: .
     networks:
       - default

@@ -1,35 +1,77 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Clube das Profs LP — production stack (Docker Swarm + Traefik)
+#
+# Build & deploy (run from repo root):
+#
+#   docker build -t jaquemendesb/clube-lp-site:latest .
+#   docker push jaquemendesb/clube-lp-site:latest
+#   docker stack deploy -c docker-compose.yml clube-lp
+#
+# Architecture:
+#   Visitor → Traefik (HTTPS via Let's Encrypt) → clube_lp_web container (porta 80, nginx)
+#
+# Prerequisites (já provisionados no host, mesmo padrão de admia/n8n/linkbio):
+#   - Docker Swarm inicializado
+#   - Rede Swarm externa `pjm-network`, com o Traefik conectado a ela
+#   - Traefik entrypoint `websecure` (:443)
+#   - Traefik certificate resolver `letsencryptresolver`
+#
+# Pendente antes do go-live: DNS de lp.clubedasprofs.com.br apontando pro
+# servidor (ver SPEC.md §Deploy para o checklist completo).
+# ─────────────────────────────────────────────────────────────────────────────
+version: "3.7"
 services:
-  clube-lp:
+  clube_lp_web:
     image: jaquemendesb/clube-lp-site:latest
-
-    # ── Traefik — roteamento e TLS ─────────────────────────────────────────
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=pjm-network
-
-      # Roteamento: apenas requisições para lp.clubedasprofs.com.br
-      - traefik.http.routers.clube-lp.rule=Host(`lp.clubedasprofs.com.br`)
-      - traefik.http.routers.clube-lp.entrypoints=websecure
-      - traefik.http.routers.clube-lp.tls.certresolver=letsencryptresolver
-      - traefik.http.routers.clube-lp.service=clube-lp
-
-      # Porta interna do nginx
-      - traefik.http.services.clube-lp.loadbalancer.server.port=80
-      - traefik.http.services.clube-lp.loadbalancer.passHostHeader=true
 
     networks:
       - pjm-network
 
-    # ── Deploy (Swarm) ──────────────────────────────────────────────────────
+    healthcheck:
+      # 127.0.0.1, não "localhost" — em Alpine/musl "localhost" resolve pra ::1
+      # (IPv6) antes de 127.0.0.1, e o nginx só escuta em IPv4 (0.0.0.0:80).
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
     deploy:
+      mode: replicated
       replicas: 1
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 64M
+        reservations:
+          cpus: "0.05"
+          memory: 16M
       restart_policy:
         condition: any
+
+      # ── Traefik — em modo Swarm, o Traefik lê labels do SERVIÇO Swarm,
+      # não do container. Por isso ficam aqui dentro de deploy:, não soltas
+      # no nível do serviço (erro que tínhamos antes desta revisão).
+      labels:
+        - traefik.enable=true
+
+        - traefik.http.routers.clube_lp_web.rule=Host(`lp.clubedasprofs.com.br`)
+        - traefik.http.routers.clube_lp_web.entrypoints=websecure
+        - traefik.http.routers.clube_lp_web.tls=true
+        - traefik.http.routers.clube_lp_web.tls.certresolver=letsencryptresolver
+        - traefik.http.routers.clube_lp_web.service=clube_lp_web
+
+        - traefik.http.services.clube_lp_web.loadbalancer.server.port=80
+        - traefik.http.services.clube_lp_web.loadbalancer.passHostHeader=true
+
       update_config:
         parallelism: 1
-        delay: 30s
+        delay: 10s
         order: start-first
         failure_action: rollback
+      rollback_config:
+        parallelism: 1
+        delay: 5s
 
 networks:
   pjm-network:

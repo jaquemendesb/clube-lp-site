@@ -120,11 +120,14 @@ Metas do PRD (§9.1): LCP < 2,5s, CLS < 0,1, INP < 200ms, medidos em condições
 
 ## Deploy
 
-**Estado (2026-07-30): implementado e testado localmente.** `Dockerfile`, `nginx.conf` e `docker-compose.yml` já existem no repo — falta só o primeiro `docker push` + aplicar a stack no Portainer (nenhum dos dois foi feito ainda nesta sessão, por não haver acesso SSH/Portainer configurado aqui).
+**Estado (2026-07-30): implementado e testado localmente, incluindo healthcheck ficando `healthy`.** `Dockerfile`, `nginx.conf` e `docker-compose.yml` já existem no repo — falta só o primeiro `docker push` + aplicar a stack no Portainer (nenhum dos dois foi feito ainda nesta sessão, por não haver acesso SSH/Portainer configurado aqui).
 
 - **Dockerfile multi-stage:** stage `build` roda `npm ci && npm run build` (Node 22 alpine) → stage `runtime` serve `dist/` via `nginx:alpine`, copiando só o HTML/CSS/JS final — imagem pequena, sem toolchain Node na imagem publicada.
-- **Reverse proxy confirmado:** Traefik, já rodando no Portainer numa rede docker externa chamada `pjm-network` (mesmo padrão usado pelos serviços `admia` e `n8n`).
+- **Reverse proxy confirmado:** Traefik, já rodando no Portainer numa rede docker externa chamada `pjm-network` (mesmo padrão usado pelos serviços `admia`, `n8n` e `linkbio`).
 - **Portainer roda em modo Swarm** (não Compose standalone) — confirmado pelo uso de `deploy.update_config` nos stacks existentes. Isso significa que o Swarm **não builda a partir do Dockerfile**: só puxa uma imagem já pronta de um registry. `docker-compose.yml` reflete isso (`image:`, não `build:`).
+- **Labels do Traefik dentro de `deploy.labels`, não soltas no serviço** — em modo Swarm o Traefik lê labels do *serviço* Swarm, não do container. Confirmado comparando com o stack `linkbio` (referência mais recente/completa que os demais) — os stacks `admia`/`n8n` tinham as labels no nível errado nos exemplos vistos, então não usar esses como referência de posicionamento de labels.
+- **Nome do serviço:** `clube_lp_web` (underscore, seguindo o padrão `linkbio_web`), não `clube-lp`.
+- **Healthcheck:** `wget -qO- http://127.0.0.1/health` — **não usar `localhost`**: em Alpine/musl, `localhost` resolve para `::1` (IPv6) antes de `127.0.0.1`, e o nginx só escuta em IPv4 (`0.0.0.0:80`), então o healthcheck falha com "connection refused" se usar `localhost`. Bug real encontrado e corrigido durante o teste local desta revisão.
 - **Registry:** Docker Hub, usuário `jaquemendesb`. Imagem: `jaquemendesb/clube-lp-site`.
 - **SSL:** Let's Encrypt via Traefik, certresolver `letsencryptresolver` (mesmo nome usado nos outros stacks).
 - **Domínio:** `lp.clubedasprofs.com.br` (subdomínio — o domínio raiz continua no WordPress por enquanto). DNS ainda precisa ser apontado pro servidor antes do primeiro acesso funcionar.
@@ -141,7 +144,7 @@ docker login
 # 3. Push da imagem
 docker push jaquemendesb/clube-lp-site:latest
 
-# 4. No Portainer: Stacks → clube-lp (criar na primeira vez, colando o
+# 4. No Portainer: Stacks → clube-lp-web (criar na primeira vez, colando o
 #    conteúdo de docker-compose.yml) → Update the stack → marca
 #    "Re-pull image and redeploy" → Update
 ```
