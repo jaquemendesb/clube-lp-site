@@ -1,0 +1,22 @@
+# Overlay só para teste local — NÃO usar no servidor de produção (Swarm).
+# Uso: docker compose -f docker-compose.yml -f docker-compose.local.yml up -d --build
+#
+# Builda a imagem localmente a partir do Dockerfile (em vez de puxar do Docker
+# Hub), substitui a rede externa "pjm-network" (que só existe no servidor) por
+# uma rede local comum, e publica a porta 8080 pra testar em
+# http://localhost:8080 sem precisar de Traefik nem Swarm rodando aqui.
+#
+# O bloco "deploy:" do arquivo base é ignorado automaticamente pelo Compose
+# standalone (não é erro, só não faz nada fora de modo Swarm) — não precisa
+# ser sobrescrito aqui.
+services:
+  clube-lp:
+    build: .
+    networks:
+      - default
+    ports:
+      - "8080:80"
+
+networks:
+  pjm-network:
+    external: false

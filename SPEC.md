@@ -47,7 +47,10 @@ clube-lp-site/
 │   └── images/                    (pendente: fotos reais)
 ├── astro.config.mjs               (vite: { plugins: [tailwindcss()] } — Tailwind v4, ver nota abaixo)
 ├── tailwind.config.mjs            (theme.extend com os design tokens)
-├── Dockerfile                     (pendente — ver §Deploy)
+├── Dockerfile                     (multi-stage: build Astro → nginx:alpine serve dist/ — ver §Deploy)
+├── nginx.conf                     (config do nginx dentro do container)
+├── docker-compose.yml             (formato Swarm/Portainer — ver §Deploy)
+├── docker-compose.local.yml       (overlay só para teste local, nunca usado em produção)
 └── package.json
 ```
 
@@ -117,10 +120,45 @@ Metas do PRD (§9.1): LCP < 2,5s, CLS < 0,1, INP < 200ms, medidos em condições
 
 ## Deploy
 
-- **Dockerfile multi-stage:** stage 1 builda o site estático (`npm run build` → `dist/`), stage 2 serve via nginx (imagem `nginx:alpine`, copiando só `dist/` — imagem final pequena).
-- **Integração com Portainer:** adicionar como novo serviço no stack/compose existente, atrás do reverse proxy já em uso (Traefik ou Nginx Proxy Manager — **confirmar qual**, ver `PRD.md` §8 "em aberto").
-- **SSL:** certificado via Let's Encrypt, provisionado pelo próprio reverse proxy (padrão em ambos Traefik e NPM).
-- **Build/CI:** para o volume desta LP (site único, deploy pouco frequente), um pipeline simples é suficiente — `git push` → build local ou em CI leve → `docker build` + `docker compose up -d` no servidor. Não é necessário Kubernetes nem CI corporativo para este escopo.
+**Estado (2026-07-30): implementado e testado localmente.** `Dockerfile`, `nginx.conf` e `docker-compose.yml` já existem no repo — falta só o primeiro `docker push` + aplicar a stack no Portainer (nenhum dos dois foi feito ainda nesta sessão, por não haver acesso SSH/Portainer configurado aqui).
+
+- **Dockerfile multi-stage:** stage `build` roda `npm ci && npm run build` (Node 22 alpine) → stage `runtime` serve `dist/` via `nginx:alpine`, copiando só o HTML/CSS/JS final — imagem pequena, sem toolchain Node na imagem publicada.
+- **Reverse proxy confirmado:** Traefik, já rodando no Portainer numa rede docker externa chamada `pjm-network` (mesmo padrão usado pelos serviços `admia` e `n8n`).
+- **Portainer roda em modo Swarm** (não Compose standalone) — confirmado pelo uso de `deploy.update_config` nos stacks existentes. Isso significa que o Swarm **não builda a partir do Dockerfile**: só puxa uma imagem já pronta de um registry. `docker-compose.yml` reflete isso (`image:`, não `build:`).
+- **Registry:** Docker Hub, usuário `jaquemendesb`. Imagem: `jaquemendesb/clube-lp-site`.
+- **SSL:** Let's Encrypt via Traefik, certresolver `letsencryptresolver` (mesmo nome usado nos outros stacks).
+- **Domínio:** `lp.clubedasprofs.com.br` (subdomínio — o domínio raiz continua no WordPress por enquanto). DNS ainda precisa ser apontado pro servidor antes do primeiro acesso funcionar.
+
+**Processo de deploy (a cada atualização):**
+
+```bash
+# 1. Build da imagem (a partir da raiz do repo)
+docker build -t jaquemendesb/clube-lp-site:latest .
+
+# 2. Login no Docker Hub (uma vez por máquina)
+docker login
+
+# 3. Push da imagem
+docker push jaquemendesb/clube-lp-site:latest
+
+# 4. No Portainer: Stacks → clube-lp (criar na primeira vez, colando o
+#    conteúdo de docker-compose.yml) → Update the stack → marca
+#    "Re-pull image and redeploy" → Update
+```
+
+**Teste local (sem precisar do Traefik/Swarm/registry):**
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.local.yml up -d --build
+# abre http://localhost:8080
+```
+
+`docker-compose.local.yml` é um overlay que builda a imagem localmente, troca a rede externa `pjm-network` por uma rede local e publica a porta 8080 — nunca deve ser usado no servidor (por isso não é carregado automaticamente pelo Compose; precisa ser passado explicitamente com `-f`).
+
+**⚠️ Pendências antes do go-live real:**
+1. DNS de `lp.clubedasprofs.com.br` apontando pro servidor Hetzner.
+2. Primeiro `docker push` da imagem (ainda não publicada no Docker Hub).
+3. Criar a stack no Portainer colando `docker-compose.yml` (ainda não aplicado no servidor).
 
 ## Assets de `../LP - Conteúdo e Planejamento/brand/` — status
 

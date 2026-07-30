@@ -1,0 +1,37 @@
+services:
+  clube-lp:
+    image: jaquemendesb/clube-lp-site:latest
+
+    # ── Traefik — roteamento e TLS ─────────────────────────────────────────
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=pjm-network
+
+      # Roteamento: apenas requisições para lp.clubedasprofs.com.br
+      - traefik.http.routers.clube-lp.rule=Host(`lp.clubedasprofs.com.br`)
+      - traefik.http.routers.clube-lp.entrypoints=websecure
+      - traefik.http.routers.clube-lp.tls.certresolver=letsencryptresolver
+      - traefik.http.routers.clube-lp.service=clube-lp
+
+      # Porta interna do nginx
+      - traefik.http.services.clube-lp.loadbalancer.server.port=80
+      - traefik.http.services.clube-lp.loadbalancer.passHostHeader=true
+
+    networks:
+      - pjm-network
+
+    # ── Deploy (Swarm) ──────────────────────────────────────────────────────
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+      update_config:
+        parallelism: 1
+        delay: 30s
+        order: start-first
+        failure_action: rollback
+
+networks:
+  pjm-network:
+    name: pjm-network
+    external: true
