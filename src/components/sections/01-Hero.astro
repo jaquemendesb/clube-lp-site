@@ -3,6 +3,7 @@
 // Variante A2 (foco em engajamento) fica pronta pro teste A/B, só trocando a classe
 // HERO-PC-A1 → HERO-PC-A2 e o headline/subheadline abaixo pelos de A2.
 import CtaButton from '../ui/CtaButton.astro';
+import Icon from '../ui/Icon.astro';
 
 const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
 ---
@@ -22,16 +23,29 @@ const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
         <CtaButton variant="secondary" href="#beneficios">Ver tudo o que está incluso</CtaButton>
       </div>
 
-      <p class="mt-space-md text-sm font-body text-clube-azul-escuro">
-        ✨ +45 mil professoras impactadas • Assinatura anual com acesso completo
-      </p>
+      <div class="mt-space-md inline-flex items-center gap-space-xs rounded-full border border-clube-rosa/30 bg-clube-branco/70 px-space-md py-space-xs shadow-sm backdrop-blur-sm">
+        <Icon name="sparkle" class="h-4 w-4 shrink-0 text-clube-rosa" />
+        <p class="font-body text-sm text-clube-azul-escuro">
+          <strong class="font-semibold">+45 mil professoras</strong> impactadas • Assinatura anual com acesso completo
+        </p>
+      </div>
     </div>
 
-    <!-- Imagem pendente (docs/reference/MEDIA-TODO.md: "Hero — banner lateral"). Placeholder
-         reserva o espaço (evita CLS) até o asset real ser copiado para public/images/. -->
+    <!-- Vídeo institucional já usado no Hero do site ao vivo (Vimeo). Substitui o placeholder
+         de imagem — o Hero nunca teve foto estática, mas já tinha esse vídeo. -->
     <div class="relative isolate">
       <div class="absolute -top-6 -right-6 -z-10 h-40 w-40 rounded-full bg-clube-amarelo/20" aria-hidden="true"></div>
-      <div class="aspect-[4/3] w-full rounded-radius-xl shadow-lg bg-clube-azul-claro" role="img" aria-label="Prof Jaque apresentando o Clube das Profs"></div>
+      <div class="relative w-full overflow-hidden rounded-radius-xl shadow-lg" style="padding:64.75% 0 0 0;">
+        <iframe
+          src="https://player.vimeo.com/video/1189191052?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+          title="Clube das Profs"
+        ></iframe>
+      </div>
     </div>
   </div>
 </section>
+
+<script src="https://player.vimeo.com/api/player.js"></script>

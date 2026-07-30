@@ -7,6 +7,7 @@
 // R$ 547,00 é valor de referência real (já praticado antes), não só efeito de âncora —
 // risco de "preço fantasma" pelo CDC se questionado. Não alterar a copy sem validar com a Jaque.
 import CtaButton from '../ui/CtaButton.astro';
+import Icon from '../ui/Icon.astro';
 
 const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
 
@@ -21,15 +22,15 @@ const itens = [
   'Bônus: Mini formação de Inteligência Artificial',
 ];
 
-const selos = [
-  '📅 Acesso por 12 meses — sem cobrança mensal',
-  '🔒 Pagamento seguro (PIX, boleto e cartão)',
-  '⚡ Acesso imediato (liberado após confirmação)',
-  '💬 Suporte humano (WhatsApp em horário comercial)',
+const selos: { icon: 'calendar' | 'lock' | 'zap' | 'chat'; texto: string }[] = [
+  { icon: 'calendar', texto: 'Acesso por 12 meses — sem cobrança mensal' },
+  { icon: 'lock', texto: 'Pagamento seguro (PIX, boleto e cartão)' },
+  { icon: 'zap', texto: 'Acesso imediato (liberado após confirmação)' },
+  { icon: 'chat', texto: 'Suporte por e-mail (atendimento@clubedasprofs.com.br)' },
 ];
 ---
 
-<section class="OFERTA-B1 py-[40px] md:py-[60px] bg-clube-azul-escuro" id="clube-valor">
+<section class="OFERTA-B1 py-[40px] md:py-[60px] bg-gradient-to-b from-clube-azul-escuro to-black" id="clube-valor">
   <div class="max-w-4xl mx-auto px-space-md">
     <h2 class="font-heading font-semibold text-[24px] md:text-[32px] text-clube-bege text-center">
       Você recebe tudo isso por 1 ano
@@ -38,13 +39,15 @@ const selos = [
     <ul class="mt-space-lg grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
       {itens.map((item) => (
         <li class="font-body text-clube-azul-claro flex items-start gap-space-sm">
-          <span aria-hidden="true" class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-clube-amarelo text-sm font-bold text-clube-azul-escuro">✓</span>
+          <span aria-hidden="true" class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-clube-amarelo text-clube-azul-escuro">
+            <Icon name="check" class="h-3.5 w-3.5" />
+          </span>
           <span>{item}</span>
         </li>
       ))}
     </ul>
 
-    <div class="mt-space-xl rounded-radius-xl shadow-lg bg-clube-branco p-space-lg text-center">
+    <div class="mt-space-xl rounded-radius-xl shadow-lg bg-gradient-to-b from-clube-branco to-clube-bege p-space-lg text-center">
       <p class="font-body text-clube-azul-escuro">
         nas condições atuais — de <span class="line-through">R$ 547,00</span> por
       </p>
@@ -62,7 +65,10 @@ const selos = [
 
       <div class="mt-space-md flex flex-wrap justify-center gap-space-sm">
         {selos.map((selo) => (
-          <span class="font-body text-sm text-clube-azul-escuro">{selo}</span>
+          <span class="inline-flex items-center gap-1.5 font-body text-sm text-clube-azul-escuro">
+            <Icon name={selo.icon} class="h-4 w-4 shrink-0 text-clube-rosa" />
+            {selo.texto}
+          </span>
         ))}
       </div>
     </div>

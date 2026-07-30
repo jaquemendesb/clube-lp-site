@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# ativos de marca brutos e documentos trazidos pela Jaque para referência local —
+# não versionar (ver CLAUDE.md §Por que não juntamos as duas pastas num projeto só)
+docs/reference/imagens/
+docs/reference/CARTÃO CNPJ*.pdf

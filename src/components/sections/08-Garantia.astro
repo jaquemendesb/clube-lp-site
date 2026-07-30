@@ -1,11 +1,12 @@
 ---
 // Conteúdo: CONTENT.md §Seção 8.
 import iconSelo from '../../assets/icons/selo-garantia-7-dias.svg';
+import Icon from '../ui/Icon.astro';
 
 const selos = [
-  '✅ Sem letra miúda (condições claras na hora da compra)',
-  '✅ Reembolso direto (processo simples pelo suporte)',
-  '✅ Risco zero pra você (o risco fica com a gente)',
+  'Sem letra miúda (condições claras na hora da compra)',
+  'Reembolso direto (processo simples pelo suporte)',
+  'Risco zero pra você (o risco fica com a gente)',
 ];
 ---
 
@@ -24,7 +25,10 @@ const selos = [
 
     <div class="mt-space-lg grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
       {selos.map((selo) => (
-        <p class="rounded-radius-xl shadow-sm bg-clube-branco p-space-md font-body text-sm text-clube-azul-escuro">{selo}</p>
+        <p class="flex items-start gap-space-xs rounded-radius-xl shadow-sm bg-clube-branco p-space-md font-body text-sm text-clube-azul-escuro">
+          <Icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-clube-rosa" />
+          <span>{selo}</span>
+        </p>
       ))}
     </div>
 

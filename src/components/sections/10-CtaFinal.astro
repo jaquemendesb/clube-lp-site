@@ -1,27 +1,38 @@
 ---
 // Conteúdo: CONTENT.md §Seção 10. Id #fechamento-cta exigido por GTM-EVENTS.md (click_cta_bottom).
 //
-// ⚠️ PENDENTE (CLAUDE.md §Decisões em aberto): qual CNPJ vigente (migração
-// 40.235.494/0001-08 → 45.702.642/0001-70 pode já ter concluído ou estar em curso) — não
-// hardcodar sem confirmar com a Jaque. URLs das políticas também pendentes (não existiam
-// resolvidas no protótipo anterior). Placeholders abaixo marcados explicitamente.
+// ✅ CNPJ confirmado em 2026-07-30 via docs/reference/CARTÃO CNPJ 21-05-2026.pdf (cartão CNPJ
+// oficial da Receita Federal): razão social JM Ecossistema Educacional Ltda,
+// CNPJ 45.549.347/0001-26 — substitui os dois CNPJs anteriores mencionados em
+// CLAUDE.md §Decisões em aberto (pendência resolvida).
+// ⚠️ PENDENTE: URLs das políticas de privacidade/vendas/termos ainda não existiam resolvidas
+// no protótipo anterior — mantidas como estavam, a confirmar com a Jaque.
 import { Image } from 'astro:assets';
 import CtaButton from '../ui/CtaButton.astro';
-import logoClube from '../../assets/images/footer-logo-clube.png';
-import logoJaquePink from '../../assets/images/footer-logo-jaque-pink.svg';
+import Icon from '../ui/Icon.astro';
+import logoClube from '../../assets/images/footer-logo-clube-branco.png';
+import logoJaque from '../../assets/images/footer-logo-jaque-branco.png';
 
 const CHECKOUT_URL = 'https://clubedasprofs.com.br/?add-to-cart=17307';
-const WHATSAPP_URL = 'https://api.whatsapp.com/send?phone=554784983702&text=Ol%C3%A1,%20Clube%20das%20Profs';
+const SUPPORT_EMAIL_URL = 'mailto:atendimento@clubedasprofs.com.br';
 const anoAtual = new Date().getFullYear();
 
-const selos = ['🔒 Pagamento seguro', '⚡ Acesso imediato', '🛟 7 dias de garantia'];
+const selos: { icon: 'lock' | 'zap' | 'shield-check'; texto: string }[] = [
+  { icon: 'lock', texto: 'Pagamento seguro' },
+  { icon: 'zap', texto: 'Acesso imediato' },
+  { icon: 'shield-check', texto: '7 dias de garantia' },
+];
 ---
 
-<section id="fechamento-cta" class="py-[40px] md:py-[60px] bg-clube-azul-escuro">
+<section id="fechamento-cta" class="py-[40px] md:py-[60px] bg-gradient-to-b from-clube-azul-escuro to-black">
   <div class="max-w-3xl mx-auto px-space-md text-center">
-    <p class="font-body text-sm uppercase tracking-wide text-clube-amarelo">VOCÊ CHEGOU ATÉ AQUI POR UM MOTIVO</p>
-    <h2 class="mt-space-xs font-heading font-semibold text-[24px] md:text-[32px] text-clube-bege">
-      A próxima semana de aula vai acontecer <strong>com você ou sem o Clube</strong>.
+    <div class="flex items-center justify-center gap-space-sm">
+      <span class="h-[3px] w-8 rounded-full bg-clube-amarelo" aria-hidden="true"></span>
+      <p class="font-heading font-bold text-sm uppercase tracking-[0.15em] text-clube-amarelo">Você chegou até aqui por um motivo</p>
+      <span class="h-[3px] w-8 rounded-full bg-clube-amarelo" aria-hidden="true"></span>
+    </div>
+    <h2 class="mt-space-sm font-heading font-semibold text-[24px] md:text-[32px] text-clube-bege">
+      A cada semana que passa, é uma semana de <strong>aulas prontas que você deixa de aproveitar</strong>.
     </h2>
     <p class="mt-space-sm font-body text-clube-azul-claro">
       Quanto antes você entra, mais semanas de material pronto, projetos completos e comunidade você usa — pelo mesmo
@@ -30,25 +41,29 @@ const selos = ['🔒 Pagamento seguro', '⚡ Acesso imediato', '🛟 7 dias de g
 
     <div class="mt-space-lg flex flex-wrap justify-center items-center gap-space-md">
       <CtaButton variant="primary" href={CHECKOUT_URL}>Quero entrar no Clube agora</CtaButton>
-      <CtaButton variant="support" href={WHATSAPP_URL}>Falar com o suporte</CtaButton>
+      <CtaButton variant="support" href={SUPPORT_EMAIL_URL}>Falar com o suporte</CtaButton>
     </div>
 
     <div class="mt-space-md flex flex-wrap justify-center gap-space-sm">
       {selos.map((selo) => (
-        <span class="rounded-full bg-clube-branco/10 px-space-md py-1 font-body text-sm text-clube-azul-claro">{selo}</span>
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-clube-branco/10 px-space-md py-1 font-body text-sm text-clube-azul-claro">
+          <Icon name={selo.icon} class="h-4 w-4 shrink-0" />
+          {selo.texto}
+        </span>
       ))}
     </div>
   </div>
 
   <footer class="mt-space-2xl border-t border-clube-azul-claro/20 pt-space-md">
     <div class="max-w-3xl mx-auto px-space-md text-center">
-      <div class="flex flex-wrap justify-center items-center gap-space-lg">
-        <Image src={logoClube} alt="Clube das Profs" width={150} height={75} loading="lazy" class="h-10 w-auto bg-clube-bege rounded p-1" />
-        <img src={logoJaquePink.src} width="270" height="95" loading="lazy" alt="Prof Jaque Mendes" class="h-8 w-auto" />
+      <div class="flex flex-wrap items-center justify-center gap-space-lg">
+        <Image src={logoClube} alt="Clube das Profs" width={200} height={200} loading="lazy" class="h-24 w-auto" />
+        <span class="hidden h-12 w-px bg-clube-azul-claro/20 sm:block" aria-hidden="true"></span>
+        <Image src={logoJaque} alt="Prof Jaque Mendes" width={280} height={124} loading="lazy" class="h-10 w-auto" />
       </div>
       <p class="mt-space-md font-body text-xs text-clube-azul-claro">
-        Copyright {anoAtual} © Prof Jaque Mendes. Todos os direitos reservados. Jaque Mendes JB Educa Ltda. CNPJ:
-        [CNPJ a confirmar — ver CLAUDE.md §Decisões em aberto]
+        Copyright {anoAtual} © Prof Jaque Mendes. Todos os direitos reservados. JM Ecossistema Educacional Ltda. CNPJ:
+        45.549.347/0001-26
       </p>
       <p class="mt-space-xs flex flex-wrap justify-center gap-space-sm font-body text-xs text-clube-azul-claro">
         <a href="https://clubedasprofs.com.br/politica-de-privacidade/" class="underline underline-offset-4">Política de Privacidade</a>

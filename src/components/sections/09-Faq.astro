@@ -4,18 +4,19 @@
 // mantido literal). FAQPage JSON-LD gerado a partir das mesmas perguntas (SPEC.md §SEO).
 const faq = [
   {
-    pergunta: 'Para quais turmas o Clube é direcionado?',
+    pergunta: 'Para quais turmas são direcionadas as atividades do Clube?',
     resposta:
-      'Ensino Fundamental I (1º ao 5º ano). Cada atividade é identificada por turma e habilidade BNCC. Funciona bem para turmas desniveladas (versões em níveis diferentes do mesmo conteúdo).',
+      'No geral, os materiais atendem todas as turmas do Ensino Fundamental I (1º ao 5º ano). Quando necessário, algumas atividades são identificadas por turma específica; no site, a maioria dos materiais é organizada por turma ou marcada como válida para todas. Nem toda atividade traz o código BNCC explícito, mas todas são alinhadas à BNCC.',
   },
   {
-    pergunta: 'Como funciona o acesso? É anual ou mensal?',
+    pergunta: 'Como funciona o acesso ao Clube? É por assinatura anual ou mensal?',
     resposta:
-      'Anual: paga uma vez, acesso liberado por 12 meses. Não é assinatura mensal recorrente — nada é cobrado automaticamente depois. Ao final, você decide se renova.',
+      'O acesso é anual: você paga uma vez e tem acesso ilimitado a todos os recursos por 12 meses. Não é assinatura mensal recorrente — nada é cobrado automaticamente depois, e ao final você decide se renova. Pode parcelar em até 12x no cartão ou pagar à vista no PIX, boleto ou cartão.',
   },
   {
-    pergunta: 'Quantas vezes por mês entram materiais novos?',
-    resposta: 'Toda semana. Aviso em primeira mão pela comunidade no WhatsApp.',
+    pergunta: 'Qual é a frequência de atualização de materiais no Clube?',
+    resposta:
+      'Atualizamos o Clube toda semana com novos materiais e atividades, garantindo recursos sempre atualizados pra você. Os avisos chegam em primeira mão pela nossa comunidade no WhatsApp.',
   },
   {
     pergunta: 'Como acesso o Clube depois que efetuar a compra?',
@@ -29,8 +30,7 @@ const faq = [
   },
   {
     pergunta: 'Tem suporte se eu precisar de ajuda?',
-    resposta:
-      'Sim, suporte humano pelo WhatsApp em horário comercial. Comunidade também é canal direto com a Prof Jaque e outras profs.',
+    resposta: 'Sim! Nosso suporte responde pelo e-mail atendimento@clubedasprofs.com.br.',
   },
 ];
 
@@ -56,7 +56,7 @@ const jsonLd = {
 
     <div class="lp-clube-sec12-accordion mt-space-xl space-y-space-sm">
       {faq.map((item, i) => (
-        <div class="rounded-radius-lg bg-clube-branco shadow-sm p-space-md">
+        <div class="rounded-radius-lg bg-clube-bege shadow-sm p-space-md">
           <button
             type="button"
             class="accordion-title w-full flex items-center justify-between gap-space-sm text-left font-heading text-clube-azul-escuro"

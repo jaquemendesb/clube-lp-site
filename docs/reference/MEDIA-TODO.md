@@ -53,8 +53,10 @@ Demais arquivos disponíveis no mapeamento original (`Feedback-02` a `Feedback-1
 | Seção 4 — capa Matemática | `Fundo-Imagens-Atividade-e-Mockup-Celular-Matematica.jpg` | `src/assets/images/beneficio-capa-matematica.jpg` |
 | Seção 4 — capa Demais disciplinas | `Fundo-Imagens-Atividade-e-Mockup-Celular-Cie-Hist-Geo.jpg` | `src/assets/images/beneficio-capa-demais-disciplinas.jpg` |
 | Seção 6 — foto da Prof Jaque | `Prof-Jaque.jpg` | `src/assets/images/prof-jaque.jpg` |
-| Seção 10 — logo Clube das Profs | `Logotipo-Clube-das-Profs-Completo-Colorido.png` | `src/assets/images/footer-logo-clube.png` |
-| Seção 10 — logo Prof Jaque (vetor rosa) | `Logo-Prof-Jaque-Mendes-Pink-368x128px.svg` | `src/assets/images/footer-logo-jaque-pink.svg` |
+| Seção 10 — logo Clube das Profs (versão branca, biblioteca de marca) | `VARIAÇÃO-47_1.png` | `src/assets/images/footer-logo-clube-branco.png` |
+| Seção 10 — logo Prof Jaque Mendes (versão branca, biblioteca de marca) | `LOGOTIPO HORIZONTAL-31 cópia@100x-8.png` | `src/assets/images/footer-logo-jaque-branco.png` |
+
+> **Atualização 2026-07-30:** a logo "Prof Jaque Mendes" antiga (baixada do site ao vivo, `footer-logo-jaque-pink.svg`) foi removida por estar fora do branding atual. A versão correta, trazida da biblioteca de marca em `docs/reference/imagens/`, foi adicionada de volta — agora em branco, ao lado da logo do Clube das Profs (também branca), sem precisar da caixa de contraste bege usada antes.
 
 Ícones de dor/benefício/garantia (Seção 2, 4, 8) já foram copiados em sessão anterior — ver `CLAUDE.md` §Decisões já tomadas.
 

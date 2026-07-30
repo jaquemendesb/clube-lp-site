@@ -119,8 +119,8 @@ Ver `SPEC.md` §"Componente de CTA" para a regra de implementação (componente 
 - Copy: "Ver tudo o que está incluso" → âncora `#beneficios`.
 
 ### CTA Suporte
-- Estilo outline branco, ícone WhatsApp.
-- Copy: "Falar com o suporte" → link WhatsApp.
+- Estilo outline branco.
+- Copy: "Falar com o suporte" → `mailto:atendimento@clubedasprofs.com.br` (trocado de WhatsApp para e-mail em 2026-07-30).
 
 **Regra de identidade única:** os três CTAs acima são as **únicas** assinaturas de botão da LP. Qualquer botão novo deve cair em uma destas três — nunca criar uma variação nova ad-hoc.
 

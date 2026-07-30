@@ -46,7 +46,7 @@ Assets de marca (fontes, ícones) já foram **copiados para dentro deste repo** 
 - Qual reverse proxy já roda no Portainer (Traefik / Nginx Proxy Manager / nginx puro) — define como o container novo se conecta.
 - ~~Confirmação da troca de foto nos depoimentos "Prof Rosa" / "Prof Maria Regina"~~ — **resolvido em 2026-07-29**: baixamos os prints reais do site ao vivo e conferimos o texto de cada um; o card já está com o print certo em ambos os casos, só o nome do arquivo original na biblioteca WP é que estava trocado. Ver `docs/reference/MEDIA-TODO.md` §Imagens de depoimento.
 - Lastro legal do preço-âncora R$547 → R$447 (ver `CONTENT.md` §Seção 7).
-- Qual CNPJ deve aparecer no rodapé — há uma migração de CNPJ em andamento (40.235.494/0001-08 → 45.702.642/0001-70) que pode já estar concluída ou em curso; confirmar antes de hardcodar. **Checado em 2026-07-29:** o site ao vivo (`clubedasprofs.com.br`) ainda mostra o CNPJ antigo (40.235.494/0001-08) no rodapé — a migração não estava concluída até essa data. Isso não confirma qual CNPJ usar aqui (a migração pode terminar antes do go-live desta LP), só registra o estado observado.
+- ~~Qual CNPJ deve aparecer no rodapé~~ — **resolvido em 2026-07-30**: a Jaque trouxe o cartão CNPJ oficial (`docs/reference/CARTÃO CNPJ 21-05-2026.pdf`, emitido pela Receita Federal em 21/05/2026). Razão social **JM Ecossistema Educacional Ltda**, CNPJ **45.549.347/0001-26**, situação ATIVA — substitui tanto o CNPJ antigo (40.235.494/0001-08) quanto o CNPJ de migração mencionado anteriormente (45.702.642/0001-70) e a razão social antiga ("Jaque Mendes JB Educa Ltda"). Já hardcodado no rodapé (`10-CtaFinal.astro`).
 
 ## Working in Portuguese
 

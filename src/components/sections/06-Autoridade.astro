@@ -1,16 +1,17 @@
 ---
 // Conteúdo: CONTENT.md §Seção 6. Sem CTA nesta seção (reservado para a Seção 7).
 import { Image } from 'astro:assets';
+import Icon from '../ui/Icon.astro';
 import fotoProfJaque from '../../assets/images/prof-jaque.jpg';
 
-const selos = [
-  { emoji: '🎓', texto: 'Pedagoga com formação e prática em sala de aula' },
-  { emoji: '👩‍🏫', texto: '+45 mil profs já usam os materiais da Jaque' },
-  { emoji: '✏️', texto: 'Cada recurso autoral, criado e validado por ela mesma' },
+const selos: { icon: 'graduation-cap' | 'user' | 'pencil'; texto: string }[] = [
+  { icon: 'graduation-cap', texto: 'Pedagoga com formação e prática em sala de aula' },
+  { icon: 'user', texto: '+45 mil profs já usam os materiais da Jaque' },
+  { icon: 'pencil', texto: 'Cada recurso autoral, criado e validado por ela mesma' },
 ];
 ---
 
-<section class="py-[40px] md:py-[60px] bg-clube-azul-escuro">
+<section class="py-[40px] md:py-[60px] bg-gradient-to-b from-clube-azul-escuro to-black">
   <div class="max-w-6xl mx-auto px-space-md grid grid-cols-1 md:grid-cols-2 gap-space-lg items-center">
     <Image
       src={fotoProfJaque}
@@ -18,11 +19,14 @@ const selos = [
       width={600}
       height={800}
       loading="lazy"
-      class="aspect-[4/3] w-full rounded-radius-lg object-cover object-top"
+      class="aspect-[4/3] w-full rounded-radius-xl shadow-lg object-cover object-top"
     />
 
     <div>
-      <p class="font-body text-sm uppercase tracking-wide text-clube-rosa">QUEM CRIA OS RECURSOS DO CLUBE</p>
+      <div class="flex items-center gap-space-sm">
+        <span class="h-[3px] w-8 rounded-full bg-clube-rosa" aria-hidden="true"></span>
+        <p class="font-heading font-bold text-sm uppercase tracking-[0.15em] text-clube-rosa">Quem cria os recursos do Clube</p>
+      </div>
       <h2 class="mt-space-xs font-heading font-semibold text-[24px] md:text-[32px] text-clube-bege">Prof Jaque Mendes</h2>
       <p class="mt-space-md font-body text-clube-azul-claro">
         Pedagoga apaixonada por criatividade e inovação na sala de aula. Há anos ajudando professoras do Fundamental I a
@@ -37,8 +41,10 @@ const selos = [
       <div class="mt-space-lg grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
         {selos.map((selo) => (
           <div class="rounded-radius-xl bg-clube-azul-claro/10 p-space-md">
-            <span aria-hidden="true">{selo.emoji}</span>
-            <p class="mt-space-xs font-body text-sm text-clube-bege">{selo.texto}</p>
+            <span class="flex h-11 w-11 items-center justify-center rounded-full bg-clube-amarelo">
+              <Icon name={selo.icon} class="h-6 w-6 text-clube-azul-escuro" />
+            </span>
+            <p class="mt-space-sm font-body text-sm text-clube-bege">{selo.texto}</p>
           </div>
         ))}
       </div>

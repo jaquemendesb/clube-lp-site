@@ -16,7 +16,7 @@ Convenção de nomenclatura GA4: **snake_case**.
 | `click_cta_middle` | Click — Just Links | `[class*="BENEFICIOS-CTA"] .lp-clube-button` | `cta_position: "middle"` | Seção 4 |
 | `view_pricing` | Element Visibility | Selector `#clube-valor`, threshold 50%, fire once per page | `oferta_variant: "B1\|B2"` | Seção 7 |
 | `click_cta_bottom` | Click — Just Links | `[class*="OFERTA-"] .lp-clube-button, #fechamento-cta .lp-clube-button` | `cta_position: "bottom"`, `oferta_variant: "B1\|B2"` | Seções 7 e 10 |
-| `click_whatsapp_support` | Click — Just Links | `.lp-clube-button-suporte, a[href*="api.whatsapp.com"], a[href*="wa.me"]` | `support_origin: "lp_final"` | Seção 10 |
+| `click_whatsapp_support` | Click — Just Links | `.lp-clube-button-suporte, a[href*="api.whatsapp.com"], a[href*="wa.me"]` | `support_origin: "lp_final"` | Seção 10 — ⚠️ o CTA de suporte trocou de WhatsApp para e-mail (`mailto:atendimento@clubedasprofs.com.br`) em 2026-07-30; o evento ainda dispara normalmente porque o seletor por classe `.lp-clube-button-suporte` continua batendo, mas o nome do evento e os seletores por href (`api.whatsapp.com`/`wa.me`) ficaram desatualizados — considerar renomear para `click_support` no contêiner GTM |
 | `scroll_50` | Scroll Depth — Vertical | 50% | — | Auto |
 | `scroll_90` | Scroll Depth — Vertical | 90% | — | Auto |
 | `faq_open` (opcional) | Click — All Elements | `.lp-clube-sec12-accordion .accordion-title` | `faq_question: {{Click Text}}` | Seção 9 |

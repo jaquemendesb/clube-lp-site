@@ -21,6 +21,7 @@ const beneficios = [
     exemplo: 'Projeto de 20 semanas para destravar a produção textual da turma',
     icon: null,
     capa: capaPortugues,
+    accent: null,
   },
   {
     categoria: 'Matemática',
@@ -28,6 +29,7 @@ const beneficios = [
     exemplo: 'Jogos imprimíveis de adição, subtração, multiplicação e divisão por nível',
     icon: null,
     capa: capaMatematica,
+    accent: null,
   },
   {
     categoria: 'Demais disciplinas',
@@ -35,6 +37,7 @@ const beneficios = [
     exemplo: 'Apresentações prontas + atividades por turma para a Semana da Pátria',
     icon: null,
     capa: capaDemaisDisciplinas,
+    accent: null,
   },
   {
     categoria: 'Projetos exclusivos',
@@ -42,6 +45,7 @@ const beneficios = [
     exemplo: '"Descomplicando a Caligrafia" em 7 passos e "Jornada Textual e Literária"',
     icon: iconProjetos,
     capa: null,
+    accent: 'bg-clube-rosa/15',
   },
   {
     categoria: 'Bônus — mini formação IA',
@@ -49,20 +53,26 @@ const beneficios = [
     exemplo: 'Gerar relatórios, planos de aula e adaptações em segundos',
     icon: iconBonusIa,
     capa: null,
+    accent: 'bg-clube-amarelo/25',
   },
   {
     categoria: 'Comunidade WhatsApp',
-    beneficio: 'Grupo exclusivo com profs trocando ideia e atualizações semanais',
+    beneficio: 'Canal exclusivo de avisos, com atualizações toda semana',
     exemplo: 'Avisos em primeira mão sempre que um material novo entra no Clube',
     icon: iconComunidade,
     capa: null,
+    accent: 'bg-clube-azul-claro/30',
   },
 ];
 ---
 
 <section id="beneficios" class="py-[40px] md:py-[60px] bg-clube-branco">
   <div class="max-w-6xl mx-auto px-space-md">
-    <p class="text-center font-body text-sm uppercase tracking-wide text-clube-rosa">ACESSO COMPLETO POR 12 MESES</p>
+    <div class="flex items-center justify-center gap-space-sm">
+      <span class="h-[3px] w-8 rounded-full bg-clube-rosa" aria-hidden="true"></span>
+      <p class="text-center font-heading font-bold text-sm uppercase tracking-[0.15em] text-clube-rosa">Acesso completo por 12 meses</p>
+      <span class="h-[3px] w-8 rounded-full bg-clube-rosa" aria-hidden="true"></span>
+    </div>
     <h2 class="mt-space-xs font-heading font-semibold text-[24px] md:text-[32px] text-clube-azul-escuro text-center">
       Tudo o que você recebe ao entrar no <strong>Clube das Profs</strong>
     </h2>
@@ -76,8 +86,14 @@ const beneficios = [
           {item.capa && (
             <Image src={item.capa} alt="" width={480} height={270} loading="lazy" class="w-full aspect-[16/9] object-cover" />
           )}
+          {item.icon && (
+            <div class={`flex w-full aspect-[16/9] items-center justify-center ${item.accent}`}>
+              <span class="flex h-16 w-16 items-center justify-center rounded-full bg-clube-branco shadow-sm">
+                <img src={item.icon.src} width="36" height="36" alt="" />
+              </span>
+            </div>
+          )}
           <div class="p-space-md">
-          {item.icon && <img src={item.icon.src} width="40" height="40" alt="" />}
           <h3 class="mt-space-xs font-heading text-lg text-clube-azul-escuro">{item.categoria}</h3>
           <p class="mt-space-xs font-body text-clube-azul-escuro">{item.beneficio}</p>
           <p class="mt-space-xs font-body text-sm text-clube-azul-escuro/80">{item.exemplo}</p>
