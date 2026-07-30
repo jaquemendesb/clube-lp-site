@@ -47,9 +47,9 @@ const selos: { icon: 'lock' | 'zap' | 'shield-check'; texto: string }[] = [
 
     <div class="mt-space-md flex flex-wrap justify-center gap-space-sm">
       {selos.map((selo) => (
-        <span class="inline-flex items-center gap-1.5 rounded-full bg-clube-branco/10 px-space-md py-1 font-body text-sm text-clube-azul-claro">
+        <span class="inline-flex max-w-full items-center gap-1.5 rounded-full bg-clube-branco/10 px-space-md py-1 font-body text-sm text-clube-azul-claro">
           <Icon name={selo.icon} class="h-4 w-4 shrink-0" />
-          {selo.texto}
+          <span class="min-w-0 break-words">{selo.texto}</span>
         </span>
       ))}
     </div>

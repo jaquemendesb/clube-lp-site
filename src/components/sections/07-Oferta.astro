@@ -66,9 +66,9 @@ const selos: { icon: 'calendar' | 'lock' | 'zap' | 'chat'; texto: string }[] = [
 
       <div class="mt-space-md flex flex-wrap justify-center gap-space-sm">
         {selos.map((selo) => (
-          <span class="inline-flex items-center gap-1.5 font-body text-sm text-clube-azul-escuro">
+          <span class="inline-flex max-w-full items-center gap-1.5 font-body text-sm text-clube-azul-escuro">
             <Icon name={selo.icon} class="h-4 w-4 shrink-0 text-clube-rosa" />
-            {selo.texto}
+            <span class="min-w-0 break-words">{selo.texto}</span>
           </span>
         ))}
       </div>
